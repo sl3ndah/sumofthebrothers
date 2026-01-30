@@ -82,6 +82,419 @@ const tracksData = {
           "releaseDate": "2024-11-10"
         }
       ]
+    },
+    "anythingandeverything": {
+      "title": "anythingandeverything",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "anythingandeverything1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "aquatica": {
+      "title": "aquatica",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "aquatica1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "buildingitup": {
+      "title": "buildingitup",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "buildingitup1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "continualloop": {
+      "title": "continualloop",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "continualloop1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "dance": {
+      "title": "dance",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "dance1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "doingme": {
+      "title": "doingme",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "doingme1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "dontlookatme": {
+      "title": "dontlookatme",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "dontlookatme1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "forgetmyname": {
+      "title": "forgetmyname",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "forgetmyname1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "fourfourfour": {
+      "title": "fourfourfour",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "fourfourfour1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "greatawesomefungoodtime": {
+      "title": "greatawesomefungoodtime",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "greatawesomefungoodtime1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "greenhillzone": {
+      "title": "greenhillzone",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "greenhillzone1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "hopinthewhip": {
+      "title": "hopinthewhip",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "hopinthewhip1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "iam": {
+      "title": "iam",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "iam1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "iou": {
+      "title": "iou",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "iou1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "isthisadream": {
+      "title": "isthisadream",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "isthisisadream1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "keepmakingmusic": {
+      "title": "keepmakingmusic",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "keepmakingmusic1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "letithappen": {
+      "title": "letithappen",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "letithappen1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "lostmymind": {
+      "title": "lostmymind",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "lostmymind1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "lucidheirs": {
+      "title": "lucidheirs",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "lucidheirs1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "manifest": {
+      "title": "manifest",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "manifest2.mp3",
+          "version": 2,
+          "releaseDate": "2026-01-30"
+        },
+        {
+          "file": "manifest1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "meetpeople": {
+      "title": "meetpeople",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "meetpeople1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "nodoubt": {
+      "title": "nodoubt",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "nodoubt1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "okay": {
+      "title": "okay",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "okay1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "peace": {
+      "title": "peace",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "peace1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "risingsun": {
+      "title": "risingsun",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "risingsun1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "spiritofthesoul": {
+      "title": "spiritofthesoul",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "spiritofthesoul1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "surrender": {
+      "title": "surrender",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "surrender1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "thisfeeling": {
+      "title": "thisfeeling",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "thisfeeling1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "tomorrow": {
+      "title": "tomorrow",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "tomorrow1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "truetoyourself": {
+      "title": "truetoyourself",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "truetoyourself1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "trynottoverdoit": {
+      "title": "trynottoverdoit",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "trynottooverdoit1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "twisted": {
+      "title": "twisted",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "twisted1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "value": {
+      "title": "value",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "value1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "yougotttago": {
+      "title": "yougotttago",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "yougottago1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
     }
   },
   "sum": {
