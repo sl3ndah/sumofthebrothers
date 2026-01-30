@@ -257,7 +257,12 @@
       "playlist": "Latest Releases",
       "versions": [
         {
-          "file": "isthisisadream1.mp3",
+          "file": "isthisadream2.mp3",
+          "version": 2,
+          "releaseDate": "2026-01-30"
+        },
+        {
+          "file": "isthisadream1.mp3",
           "version": 1,
           "releaseDate": "2026-01-30"
         }
@@ -491,6 +496,42 @@
       "versions": [
         {
           "file": "yougottago1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "find": {
+      "title": "find",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "find.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "ithastobe": {
+      "title": "ithastobe",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "ithastobe1.mp3",
+          "version": 1,
+          "releaseDate": "2026-01-30"
+        }
+      ]
+    },
+    "spectrum": {
+      "title": "spectrum",
+      "releaseDate": "2026-01-30",
+      "playlist": "Latest Releases",
+      "versions": [
+        {
+          "file": "spectrum1.mp3",
           "version": 1,
           "releaseDate": "2026-01-30"
         }
