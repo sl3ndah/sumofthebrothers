@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of the Brothers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SUMOFTHEBROTHERS</h1>
+
+        <div class="artist-nav">
+            <button class="artist-tab active" data-artist="all">ALL</button>
+            <button class="artist-tab" data-artist="sum">SUM</button>
+            <button class="artist-tab" data-artist="joey">COOLJOE</button>
+        </div>
+
+        <div class="sticky-header">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="search-input" 
+                    placeholder="Search tracks..."
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="sort-container">
+                <select class="sort-dropdown" id="sort-dropdown">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="az">Alphabetical A-Z</option>
+                    <option value="za">Alphabetical Z-A</option>
+                    <option value="plays">Most Played</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="toggle-all-container">
+            <button class="toggle-all-btn" id="toggle-all-btn">Close All</button>
+        </div>
+
+        <ul class="track-list" id="track-list">
+        </ul>
+    </div>
+
+    <div class="player-footer" id="player-footer">
+        <div class="progress-controls">
+            <span class="time-display" id="current-time">0:00</span>
+            <div class="progress-bar" id="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span class="time-display" id="duration-time">0:00</span>
+        </div>
+        
+        <div class="footer-controls">
+            <button class="control-btn" id="prev-btn">◀</button>
+            <button class="control-btn" id="play-pause-btn">▶</button>
+            <button class="control-btn" id="next-btn">▶</button>
+            
+            <button class="mode-btn" id="repeat-btn">🔁
+                <div class="mode-popup" id="repeat-popup">
+                    <div class="mode-option selected" data-mode="off">Off</div>
+                    <div class="mode-option" data-mode="track">Repeat Track</div>
+                    <div class="mode-option" data-mode="versions">Repeat Versions</div>
+                    <div class="mode-option" data-mode="all">Repeat All</div>
+                </div>
+            </button>
+            
+            <button class="mode-btn" id="shuffle-btn">🔀
+                <div class="mode-popup" id="shuffle-popup">
+                    <div class="mode-option selected" data-mode="off">Off</div>
+                    <div class="mode-option" data-mode="versions">Shuffle Versions</div>
+                    <div class="mode-option" data-mode="all">Shuffle All</div>
+                </div>
+            </button>
+            
+            <input type="range" class="volume-control" id="volume-control" min="0" max="100" value="100">
+        </div>
+        <div class="now-playing" id="now-playing">No track playing</div>
+    </div>
+
+    <audio id="audio-player"></audio>
+
+    <script src="tracks.js"></script>
+    <script>
+        const DB_NAME = 'MusicCatalogDB';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'playCounts';
+        let db = null;
+
+        function initDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+                request.onerror = () => reject(request.error);
+                request.onsuccess = () => {
+                    db = request.result;
+                    resolve(db);
+                };
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains(STORE_NAME)) {
+                        db.createObjectStore(STORE_NAME, { keyPath: 'track' });
+                    }
+                };
+            });
+        }
+
+        function setCookie(name, value, days = 3650) {
+            const expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+        }
+
+        function getCookie(name) {
+            return document.cookie.split('; ').reduce((r, v) => {
+                const parts = v.split('=');
+                return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+            }, '');
+        }
+
+        async function getPlayCount(track) {
+            let counts = [];
+            try { 
+                const stored = localStorage.getItem('playCount_' + track);
+                if (stored) counts.push(parseInt(stored));
+            } catch (e) {}
+            try {
+                if (db) {
+                    const transaction = db.transaction([STORE_NAME], 'readonly');
+                    const store = transaction.objectStore(STORE_NAME);
+                    const request = store.get(track);
+                    await new Promise((resolve) => {
+                        request.onsuccess = () => {
+                            if (request.result) counts.push(request.result.count);
+                            resolve();
+                        };
+                        request.onerror = () => resolve();
+                    });
+                }
+            } catch (e) {}
+            try {
+                const cookieVal = getCookie('playCount_' + track);
+                if (cookieVal) counts.push(parseInt(cookieVal));
+            } catch (e) {}
+            return counts.length > 0 ? Math.max(...counts) : 0;
+        }
+
+        async function savePlayCount(track, count) {
+            try { localStorage.setItem('playCount_' + track, count); } catch (e) {}
+            try {
+                if (db) {
+                    const transaction = db.transaction([STORE_NAME], 'readwrite');
+                    const store = transaction.objectStore(STORE_NAME);
+                    store.put({ track: track, count: count });
+                }
+            } catch (e) {}
+            try { setCookie('playCount_' + track, count); } catch (e) {}
+        }
+
+        async function incrementPlayCount(track) {
+            const currentCount = await getPlayCount(track);
+            const newCount = currentCount + 1;
+            await savePlayCount(track, newCount);
+            return newCount;
+        }
+
+
+        const R2_BASE_URL = 'https://pub-69412c75c80941dc9629fda6c33bf81c.r2.dev';
+
+        const audioPlayer = document.getElementById('audio-player');
+        let currentArtist = null;
+        let currentTrack = null;
+        let currentVersion = null;
+        let repeatMode = 'off';
+        let shuffleMode = 'off';
+        let isPlaying = false;
+        let playQueue = [];
+        let currentQueueIndex = 0;
+        let activeArtistFilter = 'all';
+
+        function buildQueue(startArtist, startTrack, startVersion) {
+            playQueue = [];
+            const trackData = tracksData[startArtist][startTrack];
+            
+            if (shuffleMode === 'all') {
+                const allVersions = [];
+                Object.entries(tracksData).forEach(([artist, tracks]) => {
+                    Object.entries(tracks).forEach(([trackKey, trackData]) => {
+                        trackData.versions.forEach(v => {
+                            allVersions.push({ artist, trackKey, versionFile: v.file });
+                        });
+                    });
+                });
+                for (let i = allVersions.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [allVersions[i], allVersions[j]] = [allVersions[j], allVersions[i]];
+                }
+                playQueue = allVersions;
+            } else if (shuffleMode === 'versions') {
+                const versions = [...trackData.versions];
+                for (let i = versions.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [versions[i], versions[j]] = [versions[j], versions[i]];
+                }
+                playQueue = versions.map(v => ({ artist: startArtist, trackKey: startTrack, versionFile: v.file }));
+            } else {
+                const versions = [...trackData.versions].sort((a, b) => b.version - a.version);
+                const highestVersion = versions[0];
+                const otherVersions = [...trackData.versions].filter(v => v.version !== highestVersion.version).sort((a, b) => a.version - b.version);
+                const orderedVersions = [highestVersion, ...otherVersions];
+                
+                if (repeatMode === 'all') {
+                    Object.entries(tracksData).forEach(([artist, tracks]) => {
+                        Object.entries(tracks).forEach(([trackKey, trackData]) => {
+                            const trackVersions = [...trackData.versions].sort((a, b) => b.version - a.version);
+                            const highest = trackVersions[0];
+                            const others = [...trackData.versions].filter(v => v.version !== highest.version).sort((a, b) => a.version - b.version);
+                            const ordered = [highest, ...others];
+                            ordered.forEach(v => {
+                                playQueue.push({ artist, trackKey, versionFile: v.file });
+                            });
+                        });
+                    });
+                } else {
+                    playQueue = orderedVersions.map(v => ({ artist: startArtist, trackKey: startTrack, versionFile: v.file }));
+                }
+            }
+            
+            currentQueueIndex = playQueue.findIndex(item => 
+                item.artist === startArtist && item.trackKey === startTrack && item.versionFile === startVersion
+            );
+            if (currentQueueIndex === -1) currentQueueIndex = 0;
+        }
+
+        function playNext() {
+            if (!currentTrack || playQueue.length === 0) return;
+            
+            if (repeatMode === 'track') {
+                playVersion(currentArtist, currentTrack, currentVersion);
+                return;
+            }
+            
+            currentQueueIndex++;
+            
+            if (currentQueueIndex >= playQueue.length) {
+                if (repeatMode === 'versions' || repeatMode === 'all') {
+                    currentQueueIndex = 0;
+                } else {
+                    return;
+                }
+            }
+            
+            const next = playQueue[currentQueueIndex];
+            playVersion(next.artist, next.trackKey, next.versionFile, false);
+        }
+
+        function playPrevious() {
+            if (!currentTrack || playQueue.length === 0) return;
+            
+            if (audioPlayer.currentTime > 3) {
+                audioPlayer.currentTime = 0;
+                return;
+            }
+            
+            currentQueueIndex--;
+            
+            if (currentQueueIndex < 0) {
+                if (repeatMode === 'versions' || repeatMode === 'all') {
+                    currentQueueIndex = playQueue.length - 1;
+                } else {
+                    currentQueueIndex = 0;
+                    audioPlayer.currentTime = 0;
+                    return;
+                }
+            }
+            
+            const prev = playQueue[currentQueueIndex];
+            playVersion(prev.artist, prev.trackKey, prev.versionFile, false);
+        }
+
+        async function playTrack(artist, trackKey) {
+            const track = tracksData[artist][trackKey];
+            if (!track || !track.versions.length) return;
+            
+            const versions = [...track.versions].sort((a, b) => b.version - a.version);
+            const highestVersion = versions[0];
+            
+            await playVersion(artist, trackKey, highestVersion.file);
+        }
+
+        async function playVersion(artist, trackKey, versionFile, rebuildQueue = true) {
+            const track = tracksData[artist][trackKey];
+            if (!track) return;
+
+            currentArtist = artist;
+            currentTrack = trackKey;
+            currentVersion = versionFile;
+
+            if (rebuildQueue) {
+                buildQueue(artist, trackKey, versionFile);
+            }
+
+            const url = `${R2_BASE_URL}/${artist}/${trackKey}/${versionFile}`;
+            
+            audioPlayer.src = url;
+            
+            try {
+                await audioPlayer.play();
+                isPlaying = true;
+            } catch (error) {
+                console.error('Play error:', error);
+                return;
+            }
+
+            document.querySelectorAll('.play-btn-track, .play-btn-version').forEach(btn => {
+                btn.textContent = 'Play';
+            });
+
+            document.getElementById('player-footer').classList.add('active');
+            document.getElementById('now-playing').textContent = `${artist} - ${trackKey} - ${versionFile.replace('.mp3', '')}`;
+            document.getElementById('play-pause-btn').textContent = '⏸';
+
+            const trackGroup = document.querySelector(`[data-artist="${artist}"][data-track-key="${trackKey}"].track-group`);
+            if (trackGroup) {
+                const trackBtn = trackGroup.querySelector('.play-btn-track');
+                if (trackBtn) trackBtn.textContent = 'Pause';
+            }
+
+            const versionItem = document.querySelector(`[data-artist="${artist}"][data-track-key="${trackKey}"][data-version-file="${versionFile}"]`);
+            if (versionItem) {
+                const versionBtn = versionItem.querySelector('.play-btn-version');
+                if (versionBtn) versionBtn.textContent = 'Pause';
+            }
+
+            const trackCount = await incrementPlayCount(`${artist}/${trackKey}`);
+            const versionCount = await incrementPlayCount(`${artist}/${trackKey}/${versionFile}`);
+
+            updatePlayCountDisplays(artist, trackKey, versionFile, trackCount, versionCount);
+            updatePlayingState(artist, trackKey, versionFile);
+        }
+
+        function updatePlayCountDisplays(artist, trackKey, versionFile, trackCount, versionCount) {
+            const trackGroup = document.querySelector(`[data-artist="${artist}"][data-track-key="${trackKey}"].track-group`);
+            if (trackGroup) {
+                const trackPlays = trackGroup.querySelector('.track-plays');
+                if (trackPlays) trackPlays.textContent = `plays: ${trackCount}`;
+            }
+
+            const versionItem = document.querySelector(`[data-artist="${artist}"][data-track-key="${trackKey}"][data-version-file="${versionFile}"]`);
+            if (versionItem) {
+                const versionPlays = versionItem.querySelector('.version-plays');
+                if (versionPlays) versionPlays.textContent = `plays: ${versionCount}`;
+            }
+        }
+
+        function updatePlayingState(artist, trackKey, versionFile) {
+            document.querySelectorAll('.track-header, .version-item').forEach(el => {
+                el.classList.remove('playing');
+            });
+
+            const trackGroup = document.querySelector(`[data-artist="${artist}"][data-track-key="${trackKey}"].track-group`);
+            if (trackGroup) {
+                trackGroup.querySelector('.track-header').classList.add('playing');
+            }
+
+            const versionItem = document.querySelector(`[data-artist="${artist}"][data-track-key="${trackKey}"][data-version-file="${versionFile}"]`);
+            if (versionItem) {
+                versionItem.classList.add('playing');
+            }
+        }
+
+        async function renderTracks(sortBy = 'newest') {
+            const trackList = document.getElementById('track-list');
+            trackList.innerHTML = '';
+
+            if (activeArtistFilter === 'all') {
+                // Grouped view by artist
+                for (const [artist, tracks] of Object.entries(tracksData)) {
+                    const artistGroup = document.createElement('li');
+                    artistGroup.className = 'artist-group';
+                    
+                    const trackCount = Object.keys(tracks).length;
+                    
+                    const artistHeader = document.createElement('div');
+                    artistHeader.className = 'artist-group-header';
+                    artistHeader.innerHTML = `
+                        <button class="collapse-btn">▶</button>
+                        <span class="artist-group-name">${artist}</span>
+                        <button class="play-btn-artist" data-artist="${artist}">Play</button>
+                        <span class="artist-group-count">(${trackCount} track${trackCount !== 1 ? 's' : ''})</span>
+                    `;
+                    
+                    const tracksContainer = document.createElement('div');
+                    tracksContainer.className = 'artist-group-tracks';
+                    
+                    // Get tracks as array
+                    let tracksArray = Object.entries(tracks).map(([key, data]) => ({
+                        key,
+                        artist,
+                        ...data
+                    }));
+                    
+                    // Sort tracks
+                    tracksArray = sortTracks(tracksArray, sortBy);
+                    
+                    // Render tracks
+                    for (const track of tracksArray) {
+                        const trackGroup = await renderTrackGroup(artist, track);
+                        tracksContainer.appendChild(trackGroup);
+                    }
+                    
+                    artistGroup.appendChild(artistHeader);
+                    artistGroup.appendChild(tracksContainer);
+                    trackList.appendChild(artistGroup);
+                }
+                
+                // Artist group collapse handlers
+                document.querySelectorAll('.artist-group-header').forEach(header => {
+                    header.addEventListener('click', () => {
+                        const artistGroup = header.closest('.artist-group');
+                        const tracksContainer = artistGroup.querySelector('.artist-group-tracks');
+                        const collapseBtn = header.querySelector('.collapse-btn');
+                        
+                        if (tracksContainer.classList.contains('expanded')) {
+                            tracksContainer.classList.remove('expanded');
+                            collapseBtn.textContent = '▶';
+                        } else {
+                            tracksContainer.classList.add('expanded');
+                            collapseBtn.textContent = '▼';
+                        }
+                    });
+                });
+                
+            } else {
+                // Single artist view - flat list
+                const tracks = tracksData[activeArtistFilter];
+                if (!tracks) return;
+                
+                let tracksArray = Object.entries(tracks).map(([key, data]) => ({
+                    key,
+                    artist: activeArtistFilter,
+                    ...data
+                }));
+                
+                tracksArray = sortTracks(tracksArray, sortBy);
+                
+                for (const track of tracksArray) {
+                    const trackGroup = await renderTrackGroup(activeArtistFilter, track);
+                    trackList.appendChild(trackGroup);
+                }
+            }
+            
+            attachEventListeners();
+        }
+
+        function sortTracks(tracksArray, sortBy) {
+            switch(sortBy) {
+                case 'newest':
+                    return tracksArray.sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
+                case 'oldest':
+                    return tracksArray.sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate));
+                case 'az':
+                    return tracksArray.sort((a, b) => a.title.localeCompare(b.title));
+                case 'za':
+                    return tracksArray.sort((a, b) => b.title.localeCompare(a.title));
+                default:
+                    return tracksArray;
+            }
+        }
+
+        async function renderTrackGroup(artist, track) {
+            const trackPlayCount = await getPlayCount(`${artist}/${track.key}`);
+            
+            const trackGroup = document.createElement('li');
+            trackGroup.className = 'track-group';
+            trackGroup.dataset.artist = artist;
+            trackGroup.dataset.trackKey = track.key;
+
+            const trackHeader = document.createElement('div');
+            trackHeader.className = 'track-header';
+            trackHeader.innerHTML = `
+                <button class="collapse-btn">▼</button>
+                <span class="track-name">${track.title}</span>
+                <button class="play-btn-track">Play</button>
+                <span class="track-plays">plays: ${trackPlayCount}</span>
+            `;
+            trackGroup.appendChild(trackHeader);
+
+            const versionList = document.createElement('ul');
+            versionList.className = 'version-list expanded';
+
+            for (const version of track.versions) {
+                const versionPlayCount = await getPlayCount(`${artist}/${track.key}/${version.file}`);
+                
+                const versionItem = document.createElement('li');
+                versionItem.className = 'version-item';
+                versionItem.dataset.artist = artist;
+                versionItem.dataset.trackKey = track.key;
+                versionItem.dataset.versionFile = version.file;
+                versionItem.innerHTML = `
+                    <span class="version-name">${version.file.replace('.mp3', '')}</span>
+                    <button class="play-btn-version">Play</button>
+                    <span class="version-plays">plays: ${versionPlayCount}</span>
+                    <div class="version-controls">
+                        <button class="menu-btn">⋮</button>
+                    </div>
+                `;
+                versionList.appendChild(versionItem);
+            }
+
+            trackGroup.appendChild(versionList);
+            return trackGroup;
+        }
+
+        function attachEventListeners() {
+            document.querySelectorAll('.collapse-btn').forEach(btn => {
+                const parent = btn.closest('.track-group');
+                if (parent) {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const versionList = parent.querySelector('.version-list');
+                        const isExpanded = versionList.classList.contains('expanded');
+                        
+                        if (isExpanded) {
+                            versionList.classList.remove('expanded');
+                            btn.textContent = '▶';
+                        } else {
+                            versionList.classList.add('expanded');
+                            btn.textContent = '▼';
+                        }
+                    });
+                }
+            });
+
+            document.querySelectorAll('.play-btn-track').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    const trackGroup = btn.closest('.track-group');
+                    const artist = trackGroup.dataset.artist;
+                    const trackKey = trackGroup.dataset.trackKey;
+                    
+                    if (btn.textContent === 'Pause' && currentArtist === artist && currentTrack === trackKey && isPlaying) {
+                        audioPlayer.pause();
+                        btn.textContent = 'Play';
+                        isPlaying = false;
+                        document.getElementById('play-pause-btn').textContent = '▶';
+                    } else {
+                        await playTrack(artist, trackKey);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.play-btn-artist').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    const artist = btn.dataset.artist;
+                    
+                    // Get first track of this artist
+                    const artistTracks = tracksData[artist];
+                    if (!artistTracks) return;
+                    
+                    const firstTrackKey = Object.keys(artistTracks)[0];
+                    await playTrack(artist, firstTrackKey);
+                });
+            });
+
+            document.querySelectorAll('.play-btn-version').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    const versionItem = btn.closest('.version-item');
+                    const artist = versionItem.dataset.artist;
+                    const trackKey = versionItem.dataset.trackKey;
+                    const versionFile = versionItem.dataset.versionFile;
+                    
+                    if (btn.textContent === 'Pause' && currentArtist === artist && currentTrack === trackKey && currentVersion === versionFile && isPlaying) {
+                        audioPlayer.pause();
+                        btn.textContent = 'Play';
+                        isPlaying = false;
+                        document.getElementById('play-pause-btn').textContent = '▶';
+                    } else {
+                        await playVersion(artist, trackKey, versionFile);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.menu-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const versionItem = btn.closest('.version-item');
+                    const artist = versionItem.dataset.artist;
+                    const trackKey = versionItem.dataset.trackKey;
+                    const versionFile = versionItem.dataset.versionFile;
+                    showVersionMenu(artist, trackKey, versionFile, e.target);
+                });
+            });
+        }
+
+        function showVersionMenu(artist, trackKey, versionFile, button) {
+            const url = `${R2_BASE_URL}/${artist}/${trackKey}/${versionFile}`;
+            
+            const menu = document.createElement('div');
+            menu.style.cssText = 'position:fixed;background:#222;border:1px solid #444;padding:8px 0;z-index:1000;';
+            menu.innerHTML = `
+                <div style="padding:8px 15px;cursor:pointer;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='transparent'">Download</div>
+                <div style="padding:8px 15px;cursor:pointer;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='transparent'">Copy Link</div>
+            `;
+            
+            const rect = button.getBoundingClientRect();
+            menu.style.left = rect.left + 'px';
+            menu.style.top = (rect.bottom + 5) + 'px';
+            
+            menu.children[0].onclick = () => {
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = versionFile;
+                link.click();
+                document.body.removeChild(menu);
+            };
+            
+            menu.children[1].onclick = () => {
+                const baseUrl = window.location.origin + window.location.pathname;
+                const trackUrl = `${baseUrl}?track=${encodeURIComponent(versionFile)}`;
+                navigator.clipboard.writeText(trackUrl);
+                alert('Link copied!');
+                document.body.removeChild(menu);
+            };
+            
+            document.body.appendChild(menu);
+            
+            setTimeout(() => {
+                document.addEventListener('click', function removeMenu() {
+                    if (document.body.contains(menu)) {
+                        document.body.removeChild(menu);
+                    }
+                    document.removeEventListener('click', removeMenu);
+                }, 100);
+            });
+        }
+
+        document.getElementById('play-pause-btn').addEventListener('click', () => {
+            if (isPlaying) {
+                audioPlayer.pause();
+                document.getElementById('play-pause-btn').textContent = '▶';
+                isPlaying = false;
+            } else {
+                audioPlayer.play();
+                document.getElementById('play-pause-btn').textContent = '⏸';
+                isPlaying = true;
+            }
+        });
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            playNext();
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            playPrevious();
+        });
+
+        audioPlayer.addEventListener('ended', () => {
+            playNext();
+        });
+
+        document.querySelectorAll('.artist-tab').forEach(tab => {
+            tab.addEventListener('click', async () => {
+                document.querySelectorAll('.artist-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                activeArtistFilter = tab.dataset.artist;
+                
+                // Show/hide sort dropdown based on active tab
+                const sortContainer = document.querySelector('.sort-container');
+                if (tab.dataset.artist === 'all') {
+                    sortContainer.style.display = 'none';
+                } else {
+                    sortContainer.style.display = 'block';
+                }
+                
+                await renderTracks(document.getElementById('sort-dropdown').value);
+            });
+        });
+
+        document.getElementById('toggle-all-btn').addEventListener('click', () => {
+            const btn = document.getElementById('toggle-all-btn');
+            const allVersionLists = document.querySelectorAll('.version-list');
+            const allTrackCollapseBtns = document.querySelectorAll('.track-group .collapse-btn');
+            const allArtistGroups = document.querySelectorAll('.artist-group-tracks');
+            const allArtistCollapseBtns = document.querySelectorAll('.artist-group-header .collapse-btn');
+            
+            if (btn.textContent === 'Close All') {
+                // Close track versions
+                allVersionLists.forEach(list => list.classList.remove('expanded'));
+                allTrackCollapseBtns.forEach(btn => btn.textContent = '▶');
+                
+                // Close artist groups
+                allArtistGroups.forEach(group => group.classList.remove('expanded'));
+                allArtistCollapseBtns.forEach(btn => btn.textContent = '▶');
+                
+                btn.textContent = 'Open All';
+            } else {
+                // Open track versions
+                allVersionLists.forEach(list => list.classList.add('expanded'));
+                allTrackCollapseBtns.forEach(btn => btn.textContent = '▼');
+                
+                // Open artist groups
+                allArtistGroups.forEach(group => group.classList.add('expanded'));
+                allArtistCollapseBtns.forEach(btn => btn.textContent = '▼');
+                
+                btn.textContent = 'Close All';
+            }
+        });
+
+        document.getElementById('repeat-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const popup = document.getElementById('repeat-popup');
+            const isActive = popup.classList.contains('active');
+            
+            document.querySelectorAll('.mode-popup').forEach(p => p.classList.remove('active'));
+            
+            if (!isActive) {
+                popup.classList.add('active');
+            }
+        });
+
+        document.querySelectorAll('#repeat-popup .mode-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                repeatMode = option.dataset.mode;
+                
+                document.querySelectorAll('#repeat-popup .mode-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                option.classList.add('selected');
+                
+                const btn = document.getElementById('repeat-btn');
+                btn.classList.toggle('active', repeatMode !== 'off');
+                
+                document.getElementById('repeat-popup').classList.remove('active');
+                
+                if (currentTrack) {
+                    buildQueue(currentArtist, currentTrack, currentVersion);
+                }
+            });
+        });
+
+        document.getElementById('shuffle-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const popup = document.getElementById('shuffle-popup');
+            const isActive = popup.classList.contains('active');
+            
+            document.querySelectorAll('.mode-popup').forEach(p => p.classList.remove('active'));
+            
+            if (!isActive) {
+                popup.classList.add('active');
+            }
+        });
+
+        document.querySelectorAll('#shuffle-popup .mode-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                shuffleMode = option.dataset.mode;
+                
+                document.querySelectorAll('#shuffle-popup .mode-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                option.classList.add('selected');
+                
+                const btn = document.getElementById('shuffle-btn');
+                btn.classList.toggle('active', shuffleMode !== 'off');
+                
+                document.getElementById('shuffle-popup').classList.remove('active');
+                
+                if (currentTrack) {
+                    buildQueue(currentArtist, currentTrack, currentVersion);
+                }
+            });
+        });
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.mode-popup').forEach(p => p.classList.remove('active'));
+        });
+
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (activeArtistFilter === 'all') {
+                document.querySelectorAll('.artist-group').forEach(group => {
+                    let hasMatch = false;
+                    group.querySelectorAll('.track-group').forEach(trackGroup => {
+                        const trackKey = trackGroup.dataset.trackKey;
+                        if (trackKey.toLowerCase().includes(searchTerm)) {
+                            trackGroup.style.display = '';
+                            hasMatch = true;
+                        } else {
+                            trackGroup.style.display = 'none';
+                        }
+                    });
+                    group.style.display = hasMatch ? '' : 'none';
+                });
+            } else {
+                document.querySelectorAll('.track-group').forEach(group => {
+                    const trackKey = group.dataset.trackKey;
+                    if (trackKey.toLowerCase().includes(searchTerm)) {
+                        group.style.display = '';
+                    } else {
+                        group.style.display = 'none';
+                    }
+                });
+            }
+        });
+
+        document.getElementById('sort-dropdown').addEventListener('change', (e) => {
+            renderTracks(e.target.value);
+        });
+
+        document.getElementById('volume-control').addEventListener('input', (e) => {
+            audioPlayer.volume = e.target.value / 100;
+        });
+
+        audioPlayer.addEventListener('timeupdate', () => {
+            const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+            document.getElementById('current-time').textContent = formatTime(audioPlayer.currentTime);
+            document.getElementById('duration-time').textContent = formatTime(audioPlayer.duration);
+        });
+
+        document.getElementById('progress-bar').addEventListener('click', (e) => {
+            const progressBar = e.currentTarget;
+            const rect = progressBar.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const percentage = clickX / rect.width;
+            audioPlayer.currentTime = audioPlayer.duration * percentage;
+        });
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function loadTrackFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const trackParam = urlParams.get('track');
+            
+            if (trackParam) {
+                for (const [artist, tracks] of Object.entries(tracksData)) {
+                    for (const [trackKey, trackData] of Object.entries(tracks)) {
+                        const version = trackData.versions.find(v => v.file === trackParam);
+                        if (version) {
+                            document.title = `${artist} - ${trackKey} - Joeys Music`;
+                            setTimeout(() => {
+                                playVersion(artist, trackKey, version.file);
+                            }, 500);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        async function init() {
+            await initDB();
+            
+            // Hide sort dropdown on load (default is "All" tab)
+            document.querySelector('.sort-container').style.display = 'none';
+            
+            await renderTracks('newest');
+            loadTrackFromURL();
+        }
+
+        init();
+    </script>
+</body>
+</html>

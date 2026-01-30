@@ -1,0 +1,526 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .artist-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+        }
+
+        .artist-tab {
+            background: transparent;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: color 0.2s;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        .artist-tab:hover {
+            color: #fff;
+        }
+
+        .artist-tab.active {
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            background: #000;
+            z-index: 10;
+            padding-bottom: 15px;
+        }
+
+        .search-container {
+            background: #111;
+            border: 1px solid #333;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: #0a0a0a;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 10px 12px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: #fff;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .sort-container {
+            background: #111;
+            border: 1px solid #333;
+            padding: 12px;
+        }
+
+        .sort-dropdown {
+            width: 100%;
+            background: #0a0a0a;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 10px 12px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .sort-dropdown:focus {
+            border-color: #fff;
+        }
+
+        .toggle-all-container {
+            margin-bottom: 15px;
+        }
+
+        .toggle-all-btn {
+            background: transparent;
+            border: 1px solid #666;
+            color: #fff;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .toggle-all-btn:hover {
+            background: #222;
+            border-color: #fff;
+        }
+
+        .track-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .artist-group {
+            margin-bottom: 15px;
+        }
+
+        .artist-group-header {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 8px;
+        }
+
+        .artist-group-header:hover {
+            background: #151515;
+            border-color: #555;
+        }
+
+        .artist-group-name {
+            flex: 1;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .play-btn-artist {
+            background: transparent;
+            border: 1px solid #666;
+            color: #fff;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            min-width: 60px;
+        }
+
+        .play-btn-artist:hover {
+            background: #222;
+            border-color: #fff;
+        }
+
+        .artist-group-count {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .artist-group-tracks {
+            display: none;
+        }
+
+        .artist-group-tracks.expanded {
+            display: block;
+        }
+
+        .track-group {
+            margin-bottom: 8px;
+        }
+
+        .track-header {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .track-header:hover {
+            background: #151515;
+            border-color: #444;
+        }
+
+        .track-header.playing {
+            background: #1a1a1a;
+            border-color: #fff;
+        }
+
+        .collapse-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0;
+            width: 20px;
+            text-align: center;
+        }
+
+        .track-name {
+            flex: 1;
+            font-size: 0.95rem;
+        }
+
+        .track-plays {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .play-btn-track {
+            background: transparent;
+            border: 1px solid #666;
+            color: #fff;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            min-width: 60px;
+        }
+
+        .play-btn-track:hover {
+            background: #222;
+            border-color: #fff;
+        }
+
+        .version-list {
+            list-style: none;
+            display: none;
+            background: #050505;
+            border-left: 1px solid #222;
+            border-right: 1px solid #222;
+            border-bottom: 1px solid #222;
+        }
+
+        .version-list.expanded {
+            display: block;
+        }
+
+        .version-item {
+            padding: 10px 15px 10px 45px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #111;
+            transition: background 0.2s;
+        }
+
+        .version-item:hover {
+            background: #0a0a0a;
+        }
+
+        .version-item.playing {
+            background: #151515;
+        }
+
+        .play-btn-version {
+            background: transparent;
+            border: 1px solid #666;
+            color: #fff;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            min-width: 55px;
+        }
+
+        .play-btn-version:hover {
+            background: #222;
+            border-color: #fff;
+        }
+
+        .version-name {
+            flex: 1;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .version-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .menu-btn {
+            background: transparent;
+            border: 1px solid #666;
+            color: #fff;
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .menu-btn:hover {
+            background: #222;
+            border-color: #fff;
+        }
+
+        .version-plays {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .player-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #111;
+            border-top: 1px solid #333;
+            padding: 15px 20px;
+            display: none;
+            z-index: 20;
+        }
+
+        .player-footer.active {
+            display: block;
+        }
+
+        .progress-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .footer-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 8px;
+        }
+
+        .control-btn {
+            background: transparent;
+            border: 1px solid #666;
+            color: #fff;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .control-btn:hover {
+            background: #222;
+            border-color: #fff;
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+
+        .time-display {
+            font-size: 0.85rem;
+            color: #999;
+            min-width: 45px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 6px;
+            background: #333;
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #fff;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        .mode-btn {
+            background: transparent;
+            border: 1px solid #666;
+            color: #fff;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .mode-btn:hover {
+            background: #222;
+            border-color: #fff;
+        }
+
+        .mode-btn.active {
+            background: #333;
+            border-color: #fff;
+        }
+
+        .volume-control {
+            width: 80px;
+        }
+
+        .now-playing {
+            font-size: 0.85rem;
+            color: #999;
+            text-align: center;
+        }
+
+        .mode-popup {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            background: #222;
+            border: 1px solid #444;
+            padding: 8px 0;
+            margin-bottom: 5px;
+            display: none;
+            min-width: 150px;
+        }
+
+        .mode-popup.active {
+            display: block;
+        }
+
+        .mode-option {
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .mode-option:hover {
+            background: #333;
+        }
+
+        .mode-option.selected {
+            background: #333;
+            color: #fff;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+                padding-bottom: 140px;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+
+            .track-header {
+                flex-wrap: wrap;
+            }
+
+            .track-name {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            .player-footer {
+                padding: 12px 15px;
+            }
+
+            .progress-controls {
+                margin-bottom: 10px;
+            }
+
+            .progress-bar {
+                height: 12px;
+                border-radius: 6px;
+            }
+
+            .progress-fill {
+                border-radius: 6px;
+            }
+
+            .time-display {
+                font-size: 0.75rem;
+                min-width: 40px;
+            }
+
+            .footer-controls {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .control-btn {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+
+            .volume-control {
+                width: 60px;
+            }
+        }
