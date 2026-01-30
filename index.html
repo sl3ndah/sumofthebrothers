@@ -13,7 +13,7 @@
         <div class="artist-nav">
             <button class="artist-tab active" data-artist="all">ALL</button>
             <button class="artist-tab" data-artist="sum">SUM</button>
-            <button class="artist-tab" data-artist="joey">COOLJOE</button>
+            <button class="artist-tab" data-artist="cooljoe">COOLJOE</button>
         </div>
 
         <div class="sticky-header">
@@ -849,7 +849,7 @@
                     for (const [trackKey, trackData] of Object.entries(tracks)) {
                         const version = trackData.versions.find(v => v.file === trackParam);
                         if (version) {
-                            document.title = `${artist} - ${trackKey} - Joeys Music`;
+                            document.title = `${artist} - ${trackKey} - cooljoe`;
                             setTimeout(() => {
                                 playVersion(artist, trackKey, version.file);
                             }, 500);
