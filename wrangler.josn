@@ -1,0 +1,11 @@
+{
+  "name": "global-plays",
+  "compatibility_date": "2026-02-01",
+  "main": "src/index.js",
+  "kv_namespaces": [
+    {
+      "binding": "PLAYS",
+      "id": "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+    }
+  ]
+}
