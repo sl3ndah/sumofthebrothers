@@ -4,8 +4,8 @@
   "main": "src/index.js",
   "kv_namespaces": [
     {
-      "binding": "PLAYS",
-      "id": "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+      "binding": "play-count",
+      "id": "88d65070b68844c3b59446d4e5140fff"
     }
   ]
 }

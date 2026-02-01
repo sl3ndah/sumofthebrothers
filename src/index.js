@@ -14,9 +14,9 @@ export default {
         });
       }
 
-      const current = await env.PLAYS.get(key);
+      const current = await env['play-count'].get(key);
       const count = (current ? parseInt(current, 10) : 0) + 1;
-      await env.PLAYS.put(key, String(count));
+      await env['play-count'].put(key, String(count));
 
       return new Response(JSON.stringify({ key, count }), {
         headers: {
@@ -37,7 +37,7 @@ export default {
         });
       }
 
-      const current = await env.PLAYS.get(key);
+      const current = await env['play-count'].get(key);
       const count = current ? parseInt(current, 10) : 0;
 
       return new Response(JSON.stringify({ key, count }), {
