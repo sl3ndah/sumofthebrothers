@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "kv_namespaces": [
     {
-      "binding": "play-count",
+      "binding": "sum-plays",
       "id": "88d65070b68844c3b59446d4e5140fff"
     }
   ]
