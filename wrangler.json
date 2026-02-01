@@ -1,5 +1,5 @@
 {
-  "name": "play-count",
+  "name": "sumofthebrothers",
   "compatibility_date": "2026-02-01",
   "main": "src/index.js",
   "kv_namespaces": [
