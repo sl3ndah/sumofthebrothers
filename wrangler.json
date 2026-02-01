@@ -1,0 +1,11 @@
+{
+  "name": "sumofthebrothers",
+  "compatibility_date": "2026-02-01",
+  "main": "src/index.js",
+  "kv_namespaces": [
+    {
+      "binding": "play-count",
+      "id": "88d65070b68844c3b59446d4e5140fff"
+    }
+  ]
+}
