@@ -13,7 +13,16 @@ const tracksData = {
         {
           "file": "floataway2.mp3",
           "version": 2,
-          "releaseDate": "2024-12-15"
+          "releaseDate": "2024-12-15",
+          "duration": 187,
+          "bitrate": 192,
+          "genre": ["electronic", "ambient"],
+          "mood": ["chill", "dreamy"],
+          "bpm": ["98"],
+          "key": ["Am"],
+          "tags": ["lo-fi", "late-night"],
+          "lyrics": "Drifting on the current now\nNothing left to wonder how\nJust let it go and float away",
+          "notes": "Added reverb tail on outro. Might revisit the intro pad."
         },
         {
           "file": "floataway1.mp3",

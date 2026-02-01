@@ -27,32 +27,290 @@
             letter-spacing: 2px;
         }
 
-        .artist-nav {
+        /* ── Control bar ── */
+        .ctrl-bar {
             display: flex;
+            gap: 8px;
+            margin-bottom: 0;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            font-size: 0.85rem;
         }
 
-        .artist-tab {
+        .ctrl-btn {
+            background: transparent;
+            border: 1px solid #444;
+            color: #666;
+            padding: 3px 10px;
+            font-size: 0.75rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.5px;
+        }
+
+        .ctrl-btn:hover {
+            border-color: #888;
+            color: #ccc;
+        }
+
+        .ctrl-btn.open,
+        .ctrl-btn.active {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        /* ── Panels ── */
+        .ctrl-panels {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.25s ease;
+        }
+
+        .ctrl-panels:has(.ctrl-panel.open) {
+            max-height: 200px;
+        }
+
+        .ctrl-panel {
+            display: none;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 0;
+        }
+
+        .ctrl-panel.open {
+            display: flex;
+        }
+
+        .ctrl-panel[data-panel="filter"] {
+            position: relative;
+        }
+
+        .ctrl-panel-empty {
+            color: #555;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        /* ── Pills (group + sort options) ── */
+        .ctrl-pill {
+            background: transparent;
+            border: 1px solid #333;
+            color: #666;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.15s;
+            border-radius: 3px;
+        }
+
+        .ctrl-pill:hover {
+            border-color: #666;
+            color: #ccc;
+        }
+
+        .ctrl-pill.active {
+            border-color: #fff;
+            color: #fff;
+            background: #1a1a1a;
+        }
+
+        /* ── Sort direction toggle ── */
+        .sort-dir {
+            background: transparent;
+            border: 1px solid #333;
+            color: #666;
+            width: 28px;
+            height: 28px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            border-radius: 3px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 4px;
+        }
+
+        .sort-dir:hover {
+            border-color: #666;
+            color: #ccc;
+        }
+
+        /* ── Filter add button ── */
+        .filter-add-wrap {
+            position: relative;
+        }
+
+        .filter-add-btn {
+            background: transparent;
+            border: 1px solid #333;
+            color: #666;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.15s;
+            border-radius: 3px;
+        }
+
+        .filter-add-btn:hover {
+            border-color: #666;
+            color: #ccc;
+        }
+
+        /* ── Filter category menu ── */
+        .filter-category-menu {
+            display: none;
+            position: absolute;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 6px 0;
+            z-index: 50;
+            min-width: 160px;
+            max-height: 260px;
+            overflow-y: auto;
+        }
+
+        .filter-category-menu.open {
+            display: block;
+        }
+
+        .filter-cat-group {
+            padding: 4px 0;
+        }
+
+        .filter-cat-group + .filter-cat-group {
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .filter-cat-label {
+            padding: 4px 12px 2px;
+            font-size: 0.7rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .filter-cat-item {
+            display: block;
+            width: 100%;
             background: transparent;
             border: none;
             color: #999;
-            cursor: pointer;
-            padding: 5px 10px;
-            transition: color 0.2s;
+            padding: 5px 12px;
+            font-size: 0.8rem;
             font-family: inherit;
-            font-size: inherit;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.1s;
         }
 
-        .artist-tab:hover {
+        .filter-cat-item:hover {
+            background: #252525;
             color: #fff;
         }
 
-        .artist-tab.active {
+        /* ── Filter chips tray ── */
+        .filter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 6px 0 2px;
+        }
+
+        .filter-chips:empty {
+            display: none;
+        }
+
+        /* ── Individual chip ── */
+        .filter-chip {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 3px;
+            padding: 3px 6px;
+            font-size: 0.78rem;
+        }
+
+        .chip-label {
             color: #fff;
-            border-bottom: 1px solid #fff;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .chip-condition {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #444;
+            color: #aaa;
+            font-size: 0.75rem;
+            font-family: inherit;
+            padding: 1px 2px;
+            cursor: pointer;
+            outline: none;
+            max-width: 100px;
+        }
+
+        .chip-condition:focus {
+            border-bottom-color: #fff;
+        }
+
+        .chip-value,
+        .chip-value2 {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #444;
+            color: #ccc;
+            font-size: 0.75rem;
+            font-family: inherit;
+            padding: 1px 2px;
+            outline: none;
+            width: 80px;
+        }
+
+        .chip-value:focus,
+        .chip-value2:focus {
+            border-bottom-color: #fff;
+        }
+
+        .chip-value::placeholder,
+        .chip-value2::placeholder {
+            color: #555;
+        }
+
+        input[type="date"].chip-value,
+        input[type="date"].chip-value2 {
+            width: 100px;
+            color-scheme: dark;
+        }
+
+        input[type="number"].chip-value,
+        input[type="number"].chip-value2 {
+            width: 55px;
+        }
+
+        .chip-between {
+            color: #555;
+            font-size: 0.7rem;
+        }
+
+        .chip-remove {
+            background: transparent;
+            border: none;
+            color: #555;
+            font-size: 1rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 2px;
+            transition: color 0.1s;
+        }
+
+        .chip-remove:hover {
+            color: #fff;
         }
 
         .sticky-header {
@@ -64,18 +322,19 @@
         }
 
         .search-container {
-            background: #111;
-            border: 1px solid #333;
-            padding: 12px;
+            background: transparent;
+            border: none;
+            padding: 0;
             margin-bottom: 10px;
         }
 
         .search-input {
             width: 100%;
-            background: #0a0a0a;
-            border: 1px solid #444;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #333;
             color: #fff;
-            padding: 10px 12px;
+            padding: 8px 0;
             font-size: 0.95rem;
             font-family: inherit;
             outline: none;
@@ -90,31 +349,16 @@
             color: #666;
         }
 
-        .sort-container {
-            background: #111;
-            border: 1px solid #333;
-            padding: 12px;
-        }
-
-        .sort-dropdown {
-            width: 100%;
-            background: #0a0a0a;
-            border: 1px solid #444;
-            color: #fff;
-            padding: 10px 12px;
-            font-size: 0.95rem;
-            font-family: inherit;
-            outline: none;
-            cursor: pointer;
-            transition: border-color 0.2s;
-        }
-
-        .sort-dropdown:focus {
-            border-color: #fff;
-        }
+        /* sort-container styles removed — replaced by ctrl-panel pills */
 
         .toggle-all-container {
             margin-bottom: 15px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .play-all-btn {
+            margin-left: auto;
         }
 
         .toggle-all-btn {
@@ -218,15 +462,54 @@
             border-color: #fff;
         }
 
+        .track-header.single-version {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #111;
+            padding: 10px 15px;
+            cursor: default;
+        }
+
+        .track-header.single-version:hover {
+            background: transparent;
+            border-bottom-color: #111;
+        }
+
+        .track-header.single-version.playing {
+            background: #151515;
+            border-bottom-color: #333;
+        }
+
         .collapse-btn {
             background: transparent;
             border: none;
             color: #fff;
-            font-size: 1rem;
             cursor: pointer;
             padding: 0;
             width: 20px;
-            text-align: center;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .collapse-btn::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-right: 1.5px solid #fff;
+            border-bottom: 1.5px solid #fff;
+            transform: rotate(-45deg); /* pointing right → ‣ */
+            transition: transform 0.2s ease;
+            margin-left: -2px; /* optical center */
+        }
+
+        .collapse-btn.expanded::before {
+            transform: rotate(45deg); /* pointing down → ∨ */
+            margin-left: 0;
+            margin-top: -2px;
         }
 
         .track-name {
@@ -340,12 +623,48 @@
             background: #111;
             border-top: 1px solid #333;
             padding: 15px 20px;
-            display: none;
+            display: block;
             z-index: 20;
+            transition: padding 0.2s ease;
         }
 
-        .player-footer.active {
-            display: block;
+        .player-footer.hidden .progress-controls,
+        .player-footer.hidden .footer-controls,
+        .player-footer.hidden .now-playing {
+            display: none;
+        }
+
+        .player-footer.hidden {
+            padding: 0 20px;
+        }
+
+        .player-toggle {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111;
+            border: 1px solid #333;
+            border-bottom: none;
+            color: #666;
+            width: 48px;
+            height: 24px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px 4px 0 0;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .player-toggle:hover {
+            color: #fff;
+            border-color: #666;
+        }
+
+        .player-footer.hidden .player-toggle {
+            top: -24px;
         }
 
         .progress-controls {

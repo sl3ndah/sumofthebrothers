@@ -10,13 +10,78 @@
     <div class="container">
         <h1>SUMOFTHEBROTHERS</h1>
 
-        <div class="artist-nav">
-            <button class="artist-tab active" data-artist="all">ALL</button>
-            <button class="artist-tab" data-artist="sum">SUM</button>
-            <button class="artist-tab" data-artist="cooljoe">COOLJOE</button>
-        </div>
-
         <div class="sticky-header">
+            <!-- Trigger buttons -->
+            <div class="ctrl-bar">
+                <button class="ctrl-btn" data-panel="filter">Filter</button>
+                <button class="ctrl-btn active" data-panel="group">Group</button>
+                <button class="ctrl-btn active" data-panel="sort">Sort</button>
+            </div>
+
+            <!-- Panels -->
+            <div class="ctrl-panels">
+                <!-- Filter panel -->
+                <div class="ctrl-panel" data-panel="filter">
+                    <div class="filter-add-wrap">
+                        <button class="filter-add-btn" id="filter-add-btn">+ Add</button>
+                    </div>
+                </div>
+
+                <!-- Group panel -->
+                <div class="ctrl-panel" data-panel="group">
+                    <button class="ctrl-pill active" data-group="artist">Artist</button>
+                    <button class="ctrl-pill" data-group="genre">Genre</button>
+                    <button class="ctrl-pill" data-group="mood">Mood</button>
+                    <button class="ctrl-pill" data-group="playlist">Playlist</button>
+                    <button class="ctrl-pill" data-group="none">None</button>
+                </div>
+
+                <!-- Sort panel -->
+                <div class="ctrl-panel" data-panel="sort">
+                    <button class="ctrl-pill active" data-sort="uploadDate">Upload Date</button>
+                    <button class="ctrl-pill" data-sort="title">Title</button>
+                    <button class="ctrl-pill" data-sort="duration">Duration</button>
+                    <button class="ctrl-pill" data-sort="bpm">BPM</button>
+                    <button class="ctrl-pill" data-sort="playCount">Plays</button>
+                    <button class="ctrl-pill" data-sort="random">Random</button>
+                    <button class="sort-dir" id="sort-dir">↓</button>
+                </div>
+            </div>
+
+            <!-- Active filter chips (persists outside panel) -->
+            <div class="filter-chips" id="filter-chips"></div>
+
+            <!-- Filter category menu (outside ctrl-panels to escape overflow:hidden) -->
+            <div class="filter-category-menu" id="filter-category-menu">
+                <div class="filter-cat-group">
+                    <div class="filter-cat-label">Time</div>
+                    <button class="filter-cat-item" data-filter="uploaded">Uploaded</button>
+                    <button class="filter-cat-item" data-filter="created">Created</button>
+                    <button class="filter-cat-item" data-filter="released">Released</button>
+                </div>
+                <div class="filter-cat-group">
+                    <div class="filter-cat-label">Metadata</div>
+                    <button class="filter-cat-item" data-filter="artist">Artist</button>
+                    <button class="filter-cat-item" data-filter="genre">Genre</button>
+                    <button class="filter-cat-item" data-filter="mood">Mood</button>
+                    <button class="filter-cat-item" data-filter="bpm">BPM</button>
+                    <button class="filter-cat-item" data-filter="key">Key</button>
+                    <button class="filter-cat-item" data-filter="tags">Tags</button>
+                </div>
+                <div class="filter-cat-group">
+                    <div class="filter-cat-label">Version</div>
+                    <button class="filter-cat-item" data-filter="latestOnly">Latest only</button>
+                    <button class="filter-cat-item" data-filter="firstOnly">First only</button>
+                    <button class="filter-cat-item" data-filter="specificVersion">Specific #</button>
+                </div>
+                <div class="filter-cat-group">
+                    <div class="filter-cat-label">Other</div>
+                    <button class="filter-cat-item" data-filter="hasLyrics">Has lyrics</button>
+                    <button class="filter-cat-item" data-filter="hasNotes">Has notes</button>
+                </div>
+            </div>
+
+            <!-- Search -->
             <div class="search-container">
                 <input 
                     type="text" 
@@ -26,20 +91,12 @@
                     autocomplete="off"
                 >
             </div>
-
-            <div class="sort-container">
-                <select class="sort-dropdown" id="sort-dropdown">
-                    <option value="newest">Newest First</option>
-                    <option value="oldest">Oldest First</option>
-                    <option value="az">Alphabetical A-Z</option>
-                    <option value="za">Alphabetical Z-A</option>
-                    <option value="plays">Most Played</option>
-                </select>
-            </div>
         </div>
 
         <div class="toggle-all-container">
-            <button class="toggle-all-btn" id="toggle-all-btn">Close All</button>
+            <button class="toggle-all-btn" id="open-all-btn">Open All</button>
+            <button class="toggle-all-btn" id="close-all-btn">Close All</button>
+            <button class="toggle-all-btn play-all-btn" id="play-all-btn">Play All</button>
         </div>
 
         <ul class="track-list" id="track-list">
@@ -47,6 +104,7 @@
     </div>
 
     <div class="player-footer" id="player-footer">
+        <button class="player-toggle" id="player-toggle">▲</button>
         <div class="progress-controls">
             <span class="time-display" id="current-time">0:00</span>
             <div class="progress-bar" id="progress-bar">
@@ -74,6 +132,13 @@
                     <div class="mode-option selected" data-mode="off">Off</div>
                     <div class="mode-option" data-mode="versions">Shuffle Versions</div>
                     <div class="mode-option" data-mode="all">Shuffle All</div>
+                </div>
+            </button>
+            
+            <button class="mode-btn active" id="autoplay-btn">auto
+                <div class="mode-popup" id="autoplay-popup">
+                    <div class="mode-option selected" data-mode="on">On</div>
+                    <div class="mode-option" data-mode="off">Off</div>
                 </div>
             </button>
             
@@ -175,10 +240,15 @@
         let currentVersion = null;
         let repeatMode = 'off';
         let shuffleMode = 'off';
+        let autoplaying = true;
         let isPlaying = false;
         let playQueue = [];
         let currentQueueIndex = 0;
-        let activeArtistFilter = 'all';
+        let activeGroupBy = 'artist';
+        let activeSortField = 'uploadDate';
+        let activeSortDirection = 'desc';
+        let activeFilters = [];
+        let searchTerm = '';
 
         function buildQueue(startArtist, startTrack, startVersion) {
             playQueue = [];
@@ -294,6 +364,9 @@
             const track = tracksData[artist][trackKey];
             if (!track) return;
 
+            // Manual play cancels any active Play All queue
+            if (rebuildQueue) playAllActive = false;
+
             currentArtist = artist;
             currentTrack = trackKey;
             currentVersion = versionFile;
@@ -318,7 +391,12 @@
                 btn.textContent = 'Play';
             });
 
-            document.getElementById('player-footer').classList.add('active');
+            // Reveal player if it was hidden
+            const footer = document.getElementById('player-footer');
+            if (footer.classList.contains('hidden')) {
+                footer.classList.remove('hidden');
+                document.getElementById('player-toggle').textContent = '▲';
+            }
             document.getElementById('now-playing').textContent = `${artist} - ${trackKey} - ${versionFile.replace('.mp3', '')}`;
             document.getElementById('play-pause-btn').textContent = '⏸';
 
@@ -371,147 +449,228 @@
             }
         }
 
-        async function renderTracks(sortBy = 'newest') {
+        // Flatten all tracks across all artists into one array
+        function getAllTracks() {
+            const all = [];
+            for (const [artist, tracks] of Object.entries(tracksData)) {
+                for (const [key, data] of Object.entries(tracks)) {
+                    all.push({ key, artist, ...data });
+                }
+            }
+            return all;
+        }
+
+        // Returns array of group keys for a track (a track can land in multiple groups)
+        function getGroupKeys(track) {
+            switch (activeGroupBy) {
+                case 'artist':
+                    return [track.artist];
+                case 'genre': {
+                    const set = new Set();
+                    (track.versions || []).forEach(v => (v.genre || []).forEach(g => set.add(g)));
+                    return set.size ? [...set] : ['No Genre'];
+                }
+                case 'mood': {
+                    const set = new Set();
+                    (track.versions || []).forEach(v => (v.mood || []).forEach(m => set.add(m)));
+                    return set.size ? [...set] : ['No Mood'];
+                }
+                case 'playlist':
+                    return [track.playlist || 'No Playlist'];
+                case 'none':
+                    return ['__flat__'];
+                default:
+                    return [track.artist];
+            }
+        }
+
+        async function renderTracks() {
             const trackList = document.getElementById('track-list');
             trackList.innerHTML = '';
 
-            if (activeArtistFilter === 'all') {
-                // Grouped view by artist
-                for (const [artist, tracks] of Object.entries(tracksData)) {
-                    const artistGroup = document.createElement('li');
-                    artistGroup.className = 'artist-group';
-                    
-                    const trackCount = Object.keys(tracks).length;
-                    
-                    const artistHeader = document.createElement('div');
-                    artistHeader.className = 'artist-group-header';
-                    artistHeader.innerHTML = `
-                        <button class="collapse-btn">▶</button>
-                        <span class="artist-group-name">${artist}</span>
-                        <button class="play-btn-artist" data-artist="${artist}">Play</button>
-                        <span class="artist-group-count">(${trackCount} track${trackCount !== 1 ? 's' : ''})</span>
-                    `;
-                    
-                    const tracksContainer = document.createElement('div');
-                    tracksContainer.className = 'artist-group-tracks';
-                    
-                    // Get tracks as array
-                    let tracksArray = Object.entries(tracks).map(([key, data]) => ({
-                        key,
-                        artist,
-                        ...data
-                    }));
-                    
-                    // Sort tracks
-                    tracksArray = sortTracks(tracksArray, sortBy);
-                    
-                    // Render tracks
-                    for (const track of tracksArray) {
-                        const trackGroup = await renderTrackGroup(artist, track);
-                        tracksContainer.appendChild(trackGroup);
-                    }
-                    
-                    artistGroup.appendChild(artistHeader);
-                    artistGroup.appendChild(tracksContainer);
-                    trackList.appendChild(artistGroup);
+            let allTracks = getAllTracks();
+            allTracks = applyFilters(allTracks);
+            if (searchTerm) {
+                allTracks = allTracks.filter(t => t.key.toLowerCase().includes(searchTerm));
+            }
+            allTracks = trimVersions(allTracks);
+            allTracks = sortTracks(allTracks);
+
+            if (activeGroupBy === 'none') {
+                // Flat list
+                for (const track of allTracks) {
+                    trackList.appendChild(await renderTrackGroup(track.artist, track));
                 }
-                
-                // Artist group collapse handlers
+            } else {
+                // Build ordered group map — tracks can appear in multiple groups
+                const groups = new Map();
+                for (const track of allTracks) {
+                    for (const gk of getGroupKeys(track)) {
+                        if (!groups.has(gk)) groups.set(gk, []);
+                        groups.get(gk).push(track);
+                    }
+                }
+
+                for (const [groupName, tracks] of groups) {
+                    const groupEl = document.createElement('li');
+                    groupEl.className = 'artist-group';
+
+                    const header = document.createElement('div');
+                    header.className = 'artist-group-header';
+                    header.innerHTML = `
+                    <button class="collapse-btn"></button>
+                    <span class="artist-group-name">${groupName}</span>
+                        <span class="artist-group-count">(${tracks.length} track${tracks.length !== 1 ? 's' : ''})</span>
+                    `;
+
+                    const container = document.createElement('div');
+                    container.className = 'artist-group-tracks';
+
+                    for (const track of tracks) {
+                        container.appendChild(await renderTrackGroup(track.artist, track));
+                    }
+
+                    groupEl.appendChild(header);
+                    groupEl.appendChild(container);
+                    trackList.appendChild(groupEl);
+                }
+
+                // Group collapse handlers
                 document.querySelectorAll('.artist-group-header').forEach(header => {
                     header.addEventListener('click', () => {
-                        const artistGroup = header.closest('.artist-group');
-                        const tracksContainer = artistGroup.querySelector('.artist-group-tracks');
-                        const collapseBtn = header.querySelector('.collapse-btn');
-                        
-                        if (tracksContainer.classList.contains('expanded')) {
-                            tracksContainer.classList.remove('expanded');
-                            collapseBtn.textContent = '▶';
+                        const group = header.closest('.artist-group');
+                        const container = group.querySelector('.artist-group-tracks');
+                        const btn = header.querySelector('.collapse-btn');
+                        if (container.classList.contains('expanded')) {
+                            container.classList.remove('expanded');
+                            btn.classList.remove('expanded');
                         } else {
-                            tracksContainer.classList.add('expanded');
-                            collapseBtn.textContent = '▼';
+                            container.classList.add('expanded');
+                            btn.classList.add('expanded');
                         }
                     });
                 });
-                
-            } else {
-                // Single artist view - flat list
-                const tracks = tracksData[activeArtistFilter];
-                if (!tracks) return;
-                
-                let tracksArray = Object.entries(tracks).map(([key, data]) => ({
-                    key,
-                    artist: activeArtistFilter,
-                    ...data
-                }));
-                
-                tracksArray = sortTracks(tracksArray, sortBy);
-                
-                for (const track of tracksArray) {
-                    const trackGroup = await renderTrackGroup(activeArtistFilter, track);
-                    trackList.appendChild(trackGroup);
-                }
             }
-            
+
             attachEventListeners();
         }
 
-        function sortTracks(tracksArray, sortBy) {
-            switch(sortBy) {
-                case 'newest':
-                    return tracksArray.sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
-                case 'oldest':
-                    return tracksArray.sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate));
-                case 'az':
-                    return tracksArray.sort((a, b) => a.title.localeCompare(b.title));
-                case 'za':
-                    return tracksArray.sort((a, b) => b.title.localeCompare(a.title));
-                default:
-                    return tracksArray;
+        function sortTracks(arr) {
+            if (activeSortField === 'random') {
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                return arr;
             }
+
+            const dir = activeSortDirection === 'asc' ? 1 : -1;
+
+            return arr.sort((a, b) => {
+                switch (activeSortField) {
+                    case 'uploadDate': {
+                        const da = new Date(a.uploadedDate || a.releaseDate || 0);
+                        const db = new Date(b.uploadedDate || b.releaseDate || 0);
+                        return (da - db) * dir;
+                    }
+                    case 'title':
+                        return a.title.localeCompare(b.title) * dir;
+                    case 'duration': {
+                        const da = a.duration || 0;
+                        const db = b.duration || 0;
+                        return (da - db) * dir;
+                    }
+                    case 'bpm': {
+                        const getBpm = (t) => {
+                            let max = 0;
+                            (t.versions || []).forEach(v => {
+                                (v.bpm || []).forEach(val => { const n = parseFloat(val); if (n > max) max = n; });
+                            });
+                            return max;
+                        };
+                        return (getBpm(a) - getBpm(b)) * dir;
+                    }
+                    case 'playCount': {
+                        const ca = a._playCount || 0;
+                        const cb = b._playCount || 0;
+                        return (ca - cb) * dir;
+                    }
+                    default:
+                        return 0;
+                }
+            });
         }
 
         async function renderTrackGroup(artist, track) {
             const trackPlayCount = await getPlayCount(`${artist}/${track.key}`);
+            const isMultiVersion = track.versions.length > 1;
             
             const trackGroup = document.createElement('li');
             trackGroup.className = 'track-group';
             trackGroup.dataset.artist = artist;
             trackGroup.dataset.trackKey = track.key;
 
-            const trackHeader = document.createElement('div');
-            trackHeader.className = 'track-header';
-            trackHeader.innerHTML = `
-                <button class="collapse-btn">▼</button>
-                <span class="track-name">${track.title}</span>
-                <button class="play-btn-track">Play</button>
-                <span class="track-plays">plays: ${trackPlayCount}</span>
-            `;
-            trackGroup.appendChild(trackHeader);
+            if (isMultiVersion) {
+                // Multi-version: collapsible header + nested version list
+                const trackHeader = document.createElement('div');
+                trackHeader.className = 'track-header';
+                trackHeader.innerHTML = `
+                    <button class="collapse-btn"></button>
+                    <span class="track-name">${track.title}</span>
+                    <button class="play-btn-track">Play</button>
+                    <span class="track-plays">plays: ${trackPlayCount}</span>
+                `;
+                trackGroup.appendChild(trackHeader);
 
-            const versionList = document.createElement('ul');
-            versionList.className = 'version-list expanded';
+                const versionList = document.createElement('ul');
+                versionList.className = 'version-list';
 
-            for (const version of track.versions) {
+                for (const version of track.versions) {
+                    versionList.appendChild(await renderVersionItem(artist, track.key, version));
+                }
+
+                trackGroup.appendChild(versionList);
+            } else {
+                // Single version: flat row, no collapse
+                const version = track.versions[0];
                 const versionPlayCount = await getPlayCount(`${artist}/${track.key}/${version.file}`);
-                
-                const versionItem = document.createElement('li');
-                versionItem.className = 'version-item';
-                versionItem.dataset.artist = artist;
-                versionItem.dataset.trackKey = track.key;
-                versionItem.dataset.versionFile = version.file;
-                versionItem.innerHTML = `
-                    <span class="version-name">${version.file.replace('.mp3', '')}</span>
-                    <button class="play-btn-version">Play</button>
-                    <span class="version-plays">plays: ${versionPlayCount}</span>
+
+                const row = document.createElement('div');
+                row.className = 'track-header single-version';
+                row.innerHTML = `
+                    <span class="track-name">${track.title}</span>
+                    <button class="play-btn-version" data-artist="${artist}" data-track-key="${track.key}" data-version-file="${version.file}">Play</button>
+                    <span class="track-plays">plays: ${versionPlayCount}</span>
                     <div class="version-controls">
-                        <button class="menu-btn">⋮</button>
+                        <button class="menu-btn" data-artist="${artist}" data-track-key="${track.key}" data-version-file="${version.file}">⋮</button>
                     </div>
                 `;
-                versionList.appendChild(versionItem);
+                trackGroup.appendChild(row);
+
+                // Also stamp the version file on the trackGroup so playing state can find it
+                trackGroup.dataset.versionFile = version.file;
             }
 
-            trackGroup.appendChild(versionList);
             return trackGroup;
+        }
+
+        async function renderVersionItem(artist, trackKey, version) {
+            const versionPlayCount = await getPlayCount(`${artist}/${trackKey}/${version.file}`);
+
+            const versionItem = document.createElement('li');
+            versionItem.className = 'version-item';
+            versionItem.dataset.artist = artist;
+            versionItem.dataset.trackKey = trackKey;
+            versionItem.dataset.versionFile = version.file;
+            versionItem.innerHTML = `
+                <span class="version-name">${version.file.replace('.mp3', '')}</span>
+                <button class="play-btn-version">Play</button>
+                <span class="version-plays">plays: ${versionPlayCount}</span>
+                <div class="version-controls">
+                    <button class="menu-btn">⋮</button>
+                </div>
+            `;
+            return versionItem;
         }
 
         function attachEventListeners() {
@@ -525,10 +684,10 @@
                         
                         if (isExpanded) {
                             versionList.classList.remove('expanded');
-                            btn.textContent = '▶';
+                            btn.classList.remove('expanded');
                         } else {
                             versionList.classList.add('expanded');
-                            btn.textContent = '▼';
+                            btn.classList.add('expanded');
                         }
                     });
                 }
@@ -552,27 +711,14 @@
                 });
             });
 
-            document.querySelectorAll('.play-btn-artist').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    e.stopPropagation();
-                    const artist = btn.dataset.artist;
-                    
-                    // Get first track of this artist
-                    const artistTracks = tracksData[artist];
-                    if (!artistTracks) return;
-                    
-                    const firstTrackKey = Object.keys(artistTracks)[0];
-                    await playTrack(artist, firstTrackKey);
-                });
-            });
 
             document.querySelectorAll('.play-btn-version').forEach(btn => {
                 btn.addEventListener('click', async (e) => {
                     e.stopPropagation();
-                    const versionItem = btn.closest('.version-item');
-                    const artist = versionItem.dataset.artist;
-                    const trackKey = versionItem.dataset.trackKey;
-                    const versionFile = versionItem.dataset.versionFile;
+                    const source = btn.closest('.version-item') || btn.closest('.track-group') || btn;
+                    const artist = source.dataset.artist;
+                    const trackKey = source.dataset.trackKey;
+                    const versionFile = source.dataset.versionFile || btn.dataset.versionFile;
                     
                     if (btn.textContent === 'Pause' && currentArtist === artist && currentTrack === trackKey && currentVersion === versionFile && isPlaying) {
                         audioPlayer.pause();
@@ -588,10 +734,10 @@
             document.querySelectorAll('.menu-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    const versionItem = btn.closest('.version-item');
-                    const artist = versionItem.dataset.artist;
-                    const trackKey = versionItem.dataset.trackKey;
-                    const versionFile = versionItem.dataset.versionFile;
+                    const source = btn.closest('.version-item') || btn.closest('.track-group') || btn;
+                    const artist = source.dataset.artist || btn.dataset.artist;
+                    const trackKey = source.dataset.trackKey || btn.dataset.trackKey;
+                    const versionFile = source.dataset.versionFile || btn.dataset.versionFile;
                     showVersionMenu(artist, trackKey, versionFile, e.target);
                 });
             });
@@ -660,55 +806,442 @@
         });
 
         audioPlayer.addEventListener('ended', () => {
+            // Play All overrides the autoplay toggle
+            if (playAllActive) {
+                currentQueueIndex++;
+                if (currentQueueIndex >= playQueue.length) {
+                    // Queue exhausted — stop cleanly
+                    playAllActive = false;
+                    isPlaying = false;
+                    document.getElementById('play-pause-btn').textContent = '▶';
+                    return;
+                }
+                const next = playQueue[currentQueueIndex];
+                playVersion(next.artist, next.trackKey, next.versionFile, false);
+                return;
+            }
+
+            if (!autoplaying) {
+                isPlaying = false;
+                document.getElementById('play-pause-btn').textContent = '▶';
+                return;
+            }
             playNext();
         });
 
-        document.querySelectorAll('.artist-tab').forEach(tab => {
-            tab.addEventListener('click', async () => {
-                document.querySelectorAll('.artist-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                activeArtistFilter = tab.dataset.artist;
-                
-                // Show/hide sort dropdown based on active tab
-                const sortContainer = document.querySelector('.sort-container');
-                if (tab.dataset.artist === 'all') {
-                    sortContainer.style.display = 'none';
-                } else {
-                    sortContainer.style.display = 'block';
+        // ── Filter definitions ─────────────────────────────────────
+        // Maps each filter field to its label, available conditions, and defaults
+        const FILTER_DEFS = {
+            uploaded:        { label: 'Uploaded',  conditions: ['after','before','between'], default: 'after',  valueType: 'date' },
+            created:         { label: 'Created',   conditions: ['after','before','between'], default: 'after',  valueType: 'date' },
+            released:        { label: 'Released',  conditions: ['after','before','between'], default: 'after',  valueType: 'date' },
+            artist:          { label: 'Artist',    conditions: ['is','is not'],              default: 'is',      valueType: 'text' },
+            genre:           { label: 'Genre',     conditions: ['contains','does not contain'], default: 'contains', valueType: 'text' },
+            mood:            { label: 'Mood',      conditions: ['contains','does not contain'], default: 'contains', valueType: 'text' },
+            bpm:             { label: 'BPM',       conditions: ['equals','between'],         default: 'equals',  valueType: 'number' },
+            key:             { label: 'Key',       conditions: ['is','is not'],              default: 'is',      valueType: 'text' },
+            tags:            { label: 'Tags',      conditions: ['contains','does not contain'], default: 'contains', valueType: 'text' },
+            latestOnly:      { label: 'Latest only',  conditions: [],                       default: null,      valueType: 'none' },
+            firstOnly:       { label: 'First only',   conditions: [],                       default: null,      valueType: 'none' },
+            specificVersion: { label: 'Specific #',   conditions: [],                       default: null,      valueType: 'number' },
+            hasLyrics:       { label: 'Has lyrics',   conditions: [],                       default: null,      valueType: 'none' },
+            hasNotes:        { label: 'Has notes',    conditions: [],                       default: null,      valueType: 'none' },
+        };
+
+        // ── Version trimming ──────────────────────────────────────
+        // Runs after filtering. If a version filter is active, returns shallow
+        // copies of each track with the versions array trimmed down.
+        // Without a version filter active this is a no-op (returns the same array).
+        function trimVersions(tracks) {
+            const versionFilter = activeFilters.find(f =>
+                f.field === 'latestOnly' || f.field === 'firstOnly' || f.field === 'specificVersion'
+            );
+            if (!versionFilter) return tracks;
+
+            return tracks.map(track => {
+                let kept;
+                const sorted = [...track.versions].sort((a, b) => a.version - b.version);
+
+                switch (versionFilter.field) {
+                    case 'latestOnly':
+                        kept = [sorted[sorted.length - 1]]; // highest version number
+                        break;
+                    case 'firstOnly':
+                        kept = [sorted[0]]; // lowest version number
+                        break;
+                    case 'specificVersion': {
+                        const num = parseInt(versionFilter.value);
+                        kept = sorted.filter(v => v.version === num);
+                        break;
+                    }
+                    default:
+                        kept = track.versions;
                 }
-                
-                await renderTracks(document.getElementById('sort-dropdown').value);
+
+                return { ...track, versions: kept };
+            });
+        }
+
+        // ── Filter engine ──────────────────────────────────────────
+        function applyFilters(tracks) {
+            if (activeFilters.length === 0) return tracks;
+
+            return tracks.filter(track => {
+                return activeFilters.every(f => filterTrack(track, f));
+            });
+        }
+
+        function filterTrack(track, f) {
+            switch (f.field) {
+                // ── Time filters ──
+                case 'uploaded': {
+                    const d = new Date(track.uploadedDate || track.releaseDate || 0);
+                    return dateConditionPass(d, f);
+                }
+                case 'created': {
+                    const d = new Date(track.createdDate || 0);
+                    return dateConditionPass(d, f);
+                }
+                case 'released': {
+                    const d = new Date(track.releaseDate || 0);
+                    return dateConditionPass(d, f);
+                }
+
+                // ── Metadata filters ──
+                case 'artist': {
+                    const match = track.artist === f.value;
+                    return f.condition === 'is' ? match : !match;
+                }
+                case 'genre': {
+                    const genres = new Set();
+                    (track.versions || []).forEach(v => (v.genre || []).forEach(g => genres.add(g.toLowerCase())));
+                    const has = genres.has(f.value.toLowerCase());
+                    return f.condition === 'contains' ? has : !has;
+                }
+                case 'mood': {
+                    const moods = new Set();
+                    (track.versions || []).forEach(v => (v.mood || []).forEach(m => moods.add(m.toLowerCase())));
+                    const has = moods.has(f.value.toLowerCase());
+                    return f.condition === 'contains' ? has : !has;
+                }
+                case 'bpm': {
+                    const bpms = [];
+                    (track.versions || []).forEach(v => (v.bpm || []).forEach(b => { const n = parseFloat(b); if (!isNaN(n)) bpms.push(n); }));
+                    if (bpms.length === 0) return false;
+                    if (f.condition === 'equals') return bpms.some(b => b === parseFloat(f.value));
+                    if (f.condition === 'between') {
+                        const lo = parseFloat(f.value), hi = parseFloat(f.value2);
+                        return bpms.some(b => b >= lo && b <= hi);
+                    }
+                    return false;
+                }
+                case 'key': {
+                    const keys = new Set();
+                    (track.versions || []).forEach(v => (v.key || []).forEach(k => keys.add(k.toLowerCase())));
+                    const has = keys.has(f.value.toLowerCase());
+                    return f.condition === 'is' ? has : !has;
+                }
+                case 'tags': {
+                    // Search across artist, track, and version level tags
+                    const allTags = new Set();
+                    (track.tags || []).forEach(t => allTags.add(t.toLowerCase()));
+                    (track.versions || []).forEach(v => (v.tags || []).forEach(t => allTags.add(t.toLowerCase())));
+                    const has = allTags.has(f.value.toLowerCase());
+                    return f.condition === 'contains' ? has : !has;
+                }
+
+                // ── Version filters ──
+                case 'latestOnly': {
+                    // Track passes if it has a highest version — we don't remove the track,
+                    // but this flag is handled at render time to show only that version.
+                    // For filtering purposes the track itself stays.
+                    return true;
+                }
+                case 'firstOnly':
+                    return true; // same — render-time filter
+                case 'specificVersion': {
+                    const num = parseInt(f.value);
+                    return (track.versions || []).some(v => v.version === num);
+                }
+
+                // ── Other filters ──
+                case 'hasLyrics':
+                    return (track.versions || []).some(v => v.lyrics && v.lyrics.trim().length > 0);
+                case 'hasNotes':
+                    return (track.versions || []).some(v => v.notes && v.notes.trim().length > 0);
+
+                default:
+                    return true;
+            }
+        }
+
+        function dateConditionPass(date, f) {
+            if (date.getTime() === 0) return false; // no date set
+            if (f.condition === 'after')  return date >= new Date(f.value);
+            if (f.condition === 'before') return date <= new Date(f.value);
+            if (f.condition === 'between') {
+                const lo = new Date(f.value), hi = new Date(f.value2);
+                return date >= lo && date <= hi;
+            }
+            return false;
+        }
+
+        // ── Filter UI ──────────────────────────────────────────────
+        function renderChips() {
+            const container = document.getElementById('filter-chips');
+            container.innerHTML = '';
+            activeFilters.forEach((f, idx) => {
+                container.appendChild(buildChip(f, idx));
+            });
+            // Mark Filter button active when chips exist
+            document.querySelector('.ctrl-btn[data-panel="filter"]').classList.toggle('active', activeFilters.length > 0);
+        }
+
+        function buildChip(f, idx) {
+            const def = FILTER_DEFS[f.field];
+            const chip = document.createElement('div');
+            chip.className = 'filter-chip';
+
+            let html = `<span class="chip-label">${def.label}</span>`;
+
+            // Condition selector (only for filters that have conditions)
+            if (def.conditions.length > 0) {
+                html += `<select class="chip-condition" data-idx="${idx}">`;
+                def.conditions.forEach(c => {
+                    html += `<option value="${c}" ${f.condition === c ? 'selected' : ''}>${c}</option>`;
+                });
+                html += `</select>`;
+            }
+
+            // Value input(s)
+            if (def.valueType === 'date') {
+                html += `<input type="date" class="chip-value" data-idx="${idx}" value="${f.value || ''}">`;
+                if (f.condition === 'between') {
+                    html += `<span class="chip-between">–</span>`;
+                    html += `<input type="date" class="chip-value2" data-idx="${idx}" value="${f.value2 || ''}">`;
+                }
+            } else if (def.valueType === 'number') {
+                if (f.field === 'specificVersion') {
+                    html += `<input type="number" class="chip-value" data-idx="${idx}" placeholder="#" value="${f.value || ''}" min="1" step="1">`;
+                } else if (f.condition === 'between') {
+                    html += `<input type="number" class="chip-value" data-idx="${idx}" placeholder="min" value="${f.value || ''}">`;
+                    html += `<span class="chip-between">–</span>`;
+                    html += `<input type="number" class="chip-value2" data-idx="${idx}" placeholder="max" value="${f.value2 || ''}">`;
+                } else {
+                    html += `<input type="number" class="chip-value" data-idx="${idx}" placeholder="value" value="${f.value || ''}">`;
+                }
+            } else if (def.valueType === 'text') {
+                html += `<input type="text" class="chip-value" data-idx="${idx}" placeholder="${def.label.toLowerCase()}" value="${f.value || ''}">`;
+            }
+            // valueType === 'none' gets no input (latestOnly, firstOnly, hasLyrics, hasNotes)
+
+            html += `<button class="chip-remove" data-idx="${idx}">×</button>`;
+            chip.innerHTML = html;
+            return chip;
+        }
+
+        function wireChipEvents() {
+            // Condition change → re-render chip (may add/remove value2 input) + re-filter
+            document.querySelectorAll('.chip-condition').forEach(sel => {
+                sel.addEventListener('change', (e) => {
+                    const idx = parseInt(e.target.dataset.idx);
+                    activeFilters[idx].condition = e.target.value;
+                    // Reset value2 if switching away from 'between'
+                    if (e.target.value !== 'between') activeFilters[idx].value2 = '';
+                    renderChips();
+                    wireChipEvents();
+                    renderTracks();
+                });
+            });
+
+            // Value input → update filter + re-render
+            document.querySelectorAll('.chip-value').forEach(input => {
+                input.addEventListener('input', (e) => {
+                    const idx = parseInt(e.target.dataset.idx);
+                    activeFilters[idx].value = e.target.value;
+                    renderTracks();
+                });
+            });
+
+            document.querySelectorAll('.chip-value2').forEach(input => {
+                input.addEventListener('input', (e) => {
+                    const idx = parseInt(e.target.dataset.idx);
+                    activeFilters[idx].value2 = e.target.value;
+                    renderTracks();
+                });
+            });
+
+            // Remove button
+            document.querySelectorAll('.chip-remove').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const idx = parseInt(e.target.dataset.idx);
+                    activeFilters.splice(idx, 1);
+                    renderChips();
+                    wireChipEvents();
+                    renderTracks();
+                });
+            });
+        }
+
+        // ── Filter add menu ────────────────────────────────────────
+        document.getElementById('filter-add-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const menu = document.getElementById('filter-category-menu');
+            const isOpen = menu.classList.contains('open');
+            if (!isOpen) {
+                // Position the menu just below the +Add button
+                const btn = document.getElementById('filter-add-btn');
+                const btnRect = btn.getBoundingClientRect();
+                const headerRect = document.querySelector('.sticky-header').getBoundingClientRect();
+                menu.style.top = (btnRect.bottom - headerRect.top + 4) + 'px';
+                menu.style.left = (btnRect.left - headerRect.left) + 'px';
+            }
+            menu.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.filter-cat-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const field = item.dataset.filter;
+                const def = FILTER_DEFS[field];
+
+                activeFilters.push({
+                    field: field,
+                    condition: def.default,
+                    value: '',
+                    value2: ''
+                });
+
+                // Close the category menu
+                document.getElementById('filter-category-menu').classList.remove('open');
+
+                renderChips();
+                wireChipEvents();
+                renderTracks();
             });
         });
 
-        document.getElementById('toggle-all-btn').addEventListener('click', () => {
-            const btn = document.getElementById('toggle-all-btn');
-            const allVersionLists = document.querySelectorAll('.version-list');
-            const allTrackCollapseBtns = document.querySelectorAll('.track-group .collapse-btn');
-            const allArtistGroups = document.querySelectorAll('.artist-group-tracks');
-            const allArtistCollapseBtns = document.querySelectorAll('.artist-group-header .collapse-btn');
-            
-            if (btn.textContent === 'Close All') {
-                // Close track versions
-                allVersionLists.forEach(list => list.classList.remove('expanded'));
-                allTrackCollapseBtns.forEach(btn => btn.textContent = '▶');
-                
-                // Close artist groups
-                allArtistGroups.forEach(group => group.classList.remove('expanded'));
-                allArtistCollapseBtns.forEach(btn => btn.textContent = '▶');
-                
-                btn.textContent = 'Open All';
-            } else {
-                // Open track versions
-                allVersionLists.forEach(list => list.classList.add('expanded'));
-                allTrackCollapseBtns.forEach(btn => btn.textContent = '▼');
-                
-                // Open artist groups
-                allArtistGroups.forEach(group => group.classList.add('expanded'));
-                allArtistCollapseBtns.forEach(btn => btn.textContent = '▼');
-                
-                btn.textContent = 'Close All';
+        // Close category menu on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#filter-add-btn') && !e.target.closest('#filter-category-menu')) {
+                document.getElementById('filter-category-menu').classList.remove('open');
             }
+        });
+
+        // ── Control bar: panel toggle ────────────────────────────────
+        document.querySelectorAll('.ctrl-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const key = btn.dataset.panel;
+                const panel = document.querySelector(`.ctrl-panel[data-panel="${key}"]`);
+                const wasOpen = panel.classList.contains('open');
+
+                // Close all panels
+                document.querySelectorAll('.ctrl-panel').forEach(p => p.classList.remove('open'));
+                document.querySelectorAll('.ctrl-btn').forEach(b => b.classList.remove('open'));
+
+                // Toggle the clicked one
+                if (!wasOpen) {
+                    panel.classList.add('open');
+                    btn.classList.add('open');
+                }
+            });
+        });
+
+        // Close panels on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.sticky-header')) {
+                document.querySelectorAll('.ctrl-panel').forEach(p => p.classList.remove('open'));
+                document.querySelectorAll('.ctrl-btn').forEach(b => b.classList.remove('open'));
+            }
+        });
+
+        // ── Group pills ───────────────────────────────────────────────
+        document.querySelectorAll('[data-group]').forEach(pill => {
+            pill.addEventListener('click', async () => {
+                document.querySelectorAll('[data-group]').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                activeGroupBy = pill.dataset.group;
+                // Mark the Group trigger active only when an actual grouping is selected
+                document.querySelector('.ctrl-btn[data-panel="group"]').classList.toggle('active', activeGroupBy !== 'none');
+                await renderTracks();
+            });
+        });
+
+        // ── Sort pills ────────────────────────────────────────────────
+        document.querySelectorAll('[data-sort]').forEach(pill => {
+            pill.addEventListener('click', async () => {
+                const field = pill.dataset.sort;
+                if (field === activeSortField && field !== 'random') {
+                    // Same field again → flip direction
+                    activeSortDirection = activeSortDirection === 'asc' ? 'desc' : 'asc';
+                } else {
+                    // New field
+                    document.querySelectorAll('[data-sort]').forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    activeSortField = field;
+                    activeSortDirection = field === 'title' ? 'asc' : 'desc';
+                }
+                // Update direction arrow visibility + label
+                const dirBtn = document.getElementById('sort-dir');
+                if (activeSortField === 'random') {
+                    dirBtn.style.display = 'none';
+                } else {
+                    dirBtn.style.display = 'inline-flex';
+                    dirBtn.textContent = activeSortDirection === 'desc' ? '↓' : '↑';
+                }
+                document.querySelector('.ctrl-btn[data-panel="sort"]').classList.add('active');
+                await renderTracks();
+            });
+        });
+
+        // Direction button (standalone click)
+        document.getElementById('sort-dir').addEventListener('click', async (e) => {
+            e.stopPropagation();
+            activeSortDirection = activeSortDirection === 'asc' ? 'desc' : 'asc';
+            document.getElementById('sort-dir').textContent = activeSortDirection === 'desc' ? '↓' : '↑';
+            await renderTracks();
+        });
+
+        document.getElementById('open-all-btn').addEventListener('click', () => {
+            document.querySelectorAll('.version-list').forEach(list => list.classList.add('expanded'));
+            document.querySelectorAll('.track-group .collapse-btn').forEach(b => b.classList.add('expanded'));
+            document.querySelectorAll('.artist-group-tracks').forEach(group => group.classList.add('expanded'));
+            document.querySelectorAll('.artist-group-header .collapse-btn').forEach(b => b.classList.add('expanded'));
+        });
+
+        document.getElementById('close-all-btn').addEventListener('click', () => {
+            document.querySelectorAll('.version-list').forEach(list => list.classList.remove('expanded'));
+            document.querySelectorAll('.track-group .collapse-btn').forEach(b => b.classList.remove('expanded'));
+            document.querySelectorAll('.artist-group-tracks').forEach(group => group.classList.remove('expanded'));
+            document.querySelectorAll('.artist-group-header .collapse-btn').forEach(b => b.classList.remove('expanded'));
+        });
+
+        // ── Play All ──────────────────────────────────────────────
+        let playAllActive = false;
+
+        document.getElementById('play-all-btn').addEventListener('click', async () => {
+            let allTracks = getAllTracks();
+            allTracks = applyFilters(allTracks);
+            if (searchTerm) {
+                allTracks = allTracks.filter(t => t.key.toLowerCase().includes(searchTerm));
+            }
+            allTracks = trimVersions(allTracks);
+            allTracks = sortTracks(allTracks);
+
+            if (allTracks.length === 0) return;
+
+            // Build queue from highest version of each track in filtered order
+            playQueue = allTracks.map(track => {
+                const sorted = [...track.versions].sort((a, b) => b.version - a.version);
+                return { artist: track.artist, trackKey: track.key, versionFile: sorted[0].file };
+            });
+
+            currentQueueIndex = 0;
+            playAllActive = true;
+
+            const first = playQueue[0];
+            await playVersion(first.artist, first.trackKey, first.versionFile, false);
         });
 
         document.getElementById('repeat-btn').addEventListener('click', (e) => {
@@ -781,38 +1314,40 @@
             document.querySelectorAll('.mode-popup').forEach(p => p.classList.remove('active'));
         });
 
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            
-            if (activeArtistFilter === 'all') {
-                document.querySelectorAll('.artist-group').forEach(group => {
-                    let hasMatch = false;
-                    group.querySelectorAll('.track-group').forEach(trackGroup => {
-                        const trackKey = trackGroup.dataset.trackKey;
-                        if (trackKey.toLowerCase().includes(searchTerm)) {
-                            trackGroup.style.display = '';
-                            hasMatch = true;
-                        } else {
-                            trackGroup.style.display = 'none';
-                        }
-                    });
-                    group.style.display = hasMatch ? '' : 'none';
-                });
-            } else {
-                document.querySelectorAll('.track-group').forEach(group => {
-                    const trackKey = group.dataset.trackKey;
-                    if (trackKey.toLowerCase().includes(searchTerm)) {
-                        group.style.display = '';
-                    } else {
-                        group.style.display = 'none';
-                    }
-                });
+        // ── Autoplay toggle ───────────────────────────────────────
+        document.getElementById('autoplay-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const popup = document.getElementById('autoplay-popup');
+            const isActive = popup.classList.contains('active');
+
+            document.querySelectorAll('.mode-popup').forEach(p => p.classList.remove('active'));
+
+            if (!isActive) {
+                popup.classList.add('active');
             }
         });
 
-        document.getElementById('sort-dropdown').addEventListener('change', (e) => {
-            renderTracks(e.target.value);
+        document.querySelectorAll('#autoplay-popup .mode-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                autoplaying = option.dataset.mode === 'on';
+
+                document.querySelectorAll('#autoplay-popup .mode-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                option.classList.add('selected');
+
+                document.getElementById('autoplay-btn').classList.toggle('active', autoplaying);
+                document.getElementById('autoplay-popup').classList.remove('active');
+            });
         });
+
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            searchTerm = e.target.value.toLowerCase();
+            renderTracks();
+        });
+
+        // sort dropdown removed — handled by sort pills above
 
         document.getElementById('volume-control').addEventListener('input', (e) => {
             audioPlayer.volume = e.target.value / 100;
@@ -860,13 +1395,41 @@
             }
         }
 
+        // ── Player hide/reveal toggle ─────────────────────────────
+        document.getElementById('player-toggle').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const footer = document.getElementById('player-footer');
+            const btn = document.getElementById('player-toggle');
+            footer.classList.toggle('hidden');
+            btn.textContent = footer.classList.contains('hidden') ? '▼' : '▲';
+        });
+
+        // ── Autoplay random track on first user gesture ───────────
+        let autoplayed = false;
+        function pickRandomTrack() {
+            const all = getAllTracks();
+            if (all.length === 0) return;
+            const track = all[Math.floor(Math.random() * all.length)];
+            const versions = [...track.versions].sort((a, b) => b.version - a.version);
+            playVersion(track.artist, track.key, versions[0].file);
+        }
+
+        function onFirstGesture() {
+            if (autoplayed) return;
+            autoplayed = true;
+            document.removeEventListener('click', onFirstGesture);
+            document.removeEventListener('touchstart', onFirstGesture);
+            // Back off if the user already triggered a track manually
+            if (currentTrack) return;
+            pickRandomTrack();
+        }
+
+        document.addEventListener('click', onFirstGesture);
+        document.addEventListener('touchstart', onFirstGesture);
+
         async function init() {
             await initDB();
-            
-            // Hide sort dropdown on load (default is "All" tab)
-            document.querySelector('.sort-container').style.display = 'none';
-            
-            await renderTracks('newest');
+            await renderTracks();
             loadTrackFromURL();
         }
 

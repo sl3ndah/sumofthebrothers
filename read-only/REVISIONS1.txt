@@ -1,0 +1,52 @@
+i dont want the ability to create smart playlists in the site itself, id rather that be in the back end. 
+
+I do want the same filtering, grouping, and sorting options that the playlists will be using, and i want those displayed on the site to filter in realtime. 
+
+How will they be displayed on the site? 
+Im thinking navBar: 
+[filter]   [group]   [sort]
+
+ then we add these in dropdowns:
+ Time-based:
+- Uploaded: today, this week, this month, this year, before/after date
+- Created: today, this week, this month, this year, before/after date
+- Released: today, this week, this month, this year, before/after date
+
+Metadata:
+- Artist: is, is not, contains
+- Genre: contains, does not contain, is empty
+- Mood: contains, does not contain, is empty
+- BPM: equals, between, greater than, less than
+- Key: is, is not, is empty
+- Duration: greater than, less than, between
+
+Version filters:
+- Version: first, last, specific number, all versions
+- Only latest version per track
+
+Other:
+- Playlist: is, is not
+- Has lyrics: yes, no
+- Has notes: yes, no
+```
+
+Users can click the navBar selections to keep them open, or hover to reveal. 
+
+UX is everything so if you have a better idea for this, please, i am open! It doesnt have to be revolutionary, just efficient. 
+
+
+dont want an info button next to the play button, just want a "view info" selection in the 3 dot menu. 
+
+we need to add 3 dot menus to the track containers, the same way that the versions have. we could probably include a download all selection to the 3 dots within the track containers. 
+
+any extended fields (like lyrics and notes) should collapsible within the info modal
+
+we should add a version display title to the metadata, so that we can change the display name if we want
+
+autoplay on/off in the audio player footer.
+
+I'd like to change our ruling on giving tracks with only one version, a track container dropdown. it seemed like a good idea but I was wrong and it makes things a bit cluttered. track container dropdowns should be reserved for tracks with multiple versions because the expand/collapse arrow and track container distinguish them from tracks with only one version. 
+
+Also our frontend currently opens all of our track containers by default when expanding an artist, I'd like to change that because it clutters the screen quickly. 
+
+Before you do anything what do you think of these changes?
