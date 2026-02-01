@@ -5,7 +5,14 @@
   "scripts": {
     "update": "node generate-tracklist.js"
   },
-  "keywords": ["music", "player", "r2"],
+  "keywords": [
+    "music",
+    "player",
+    "r2"
+  ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "music-metadata": "^11.11.1"
+  }
 }

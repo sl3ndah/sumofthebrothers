@@ -1,587 +1,1416 @@
 {
-  "cooljoe": {
-    "floataway": {
-      "title": "floataway",
-      "releaseDate": "2025-01-05",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "floataway3.mp3",
-          "version": 3,
-          "releaseDate": "2025-01-05"
-        },
-        {
-          "file": "floataway2.mp3",
-          "version": 2,
-          "releaseDate": "2024-12-15"
-        },
-        {
-          "file": "floataway1.mp3",
-          "version": 1,
-          "releaseDate": "2024-12-01"
-        }
-      ]
+  "artists": {
+    "cooljoe": {
+      "displayName": "Cool Joe",
+      "bio": "",
+      "links": {
+        "website": "",
+        "instagram": "",
+        "spotify": "",
+        "soundcloud": "",
+        "bandcamp": "",
+        "youtube": ""
+      }
     },
-    "dreamscanbe": {
-      "title": "dreamscanbe",
-      "releaseDate": "2025-01-20",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "dreamscanbe2.mp3",
-          "version": 2,
-          "releaseDate": "2025-01-20"
-        },
-        {
-          "file": "dreamscanbe1.mp3",
-          "version": 1,
-          "releaseDate": "2025-01-15"
-        }
-      ]
-    },
-    "dropsofrain": {
-      "title": "dropsofrain",
-      "releaseDate": "2025-01-10",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "dropsofrain1.mp3",
-          "version": 1,
-          "releaseDate": "2025-01-10"
-        }
-      ]
-    },
-    "keepon": {
-      "title": "keepon",
-      "releaseDate": "2024-12-10",
-      "playlist": "Works in Progress",
-      "versions": [
-        {
-          "file": "keepon5.mp3",
-          "version": 5,
-          "releaseDate": "2024-12-10"
-        },
-        {
-          "file": "keepon4.mp3",
-          "version": 4,
-          "releaseDate": "2024-12-01"
-        },
-        {
-          "file": "keepon3.mp3",
-          "version": 3,
-          "releaseDate": "2024-11-20"
-        },
-        {
-          "file": "keepon2.mp3",
-          "version": 2,
-          "releaseDate": "2024-11-15"
-        },
-        {
-          "file": "keepon1.mp3",
-          "version": 1,
-          "releaseDate": "2024-11-10"
-        }
-      ]
-    },
-    "anythingandeverything": {
-      "title": "anythingandeverything",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "anythingandeverything1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "aquatica": {
-      "title": "aquatica",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "aquatica1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "buildingitup": {
-      "title": "buildingitup",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "buildingitup1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "continualloop": {
-      "title": "continualloop",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "continualloop1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "dance": {
-      "title": "dance",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "dance1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "doingme": {
-      "title": "doingme",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "doingme1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "dontlookatme": {
-      "title": "dontlookatme",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "dontlookatme1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "forgetmyname": {
-      "title": "forgetmyname",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "forgetmyname1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "fourfourfour": {
-      "title": "fourfourfour",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "fourfourfour1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "greatawesomefungoodtime": {
-      "title": "greatawesomefungoodtime",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "greatawesomefungoodtime1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "greenhillzone": {
-      "title": "greenhillzone",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "greenhillzone1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "hopinthewhip": {
-      "title": "hopinthewhip",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "hopinthewhip1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "iam": {
-      "title": "iam",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "iam1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "iou": {
-      "title": "iou",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "iou1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "isthisadream": {
-      "title": "isthisadream",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "isthisadream2.mp3",
-          "version": 2,
-          "releaseDate": "2026-01-30"
-        },
-        {
-          "file": "isthisadream1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "keepmakingmusic": {
-      "title": "keepmakingmusic",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "keepmakingmusic1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "letithappen": {
-      "title": "letithappen",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "letithappen1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "lostmymind": {
-      "title": "lostmymind",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "lostmymind1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "lucidheirs": {
-      "title": "lucidheirs",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "lucidheirs1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "manifest": {
-      "title": "manifest",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "manifest2.mp3",
-          "version": 2,
-          "releaseDate": "2026-01-30"
-        },
-        {
-          "file": "manifest1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "meetpeople": {
-      "title": "meetpeople",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "meetpeople1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "nodoubt": {
-      "title": "nodoubt",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "nodoubt1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "okay": {
-      "title": "okay",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "okay1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "peace": {
-      "title": "peace",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "peace1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "risingsun": {
-      "title": "risingsun",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "risingsun1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "spiritofthesoul": {
-      "title": "spiritofthesoul",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "spiritofthesoul1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "surrender": {
-      "title": "surrender",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "surrender1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "thisfeeling": {
-      "title": "thisfeeling",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "thisfeeling1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "tomorrow": {
-      "title": "tomorrow",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "tomorrow1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "truetoyourself": {
-      "title": "truetoyourself",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "truetoyourself1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "trynottoverdoit": {
-      "title": "trynottoverdoit",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "trynottooverdoit1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "twisted": {
-      "title": "twisted",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "twisted1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "value": {
-      "title": "value",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "value1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "yougotttago": {
-      "title": "yougotttago",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "yougottago1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "find": {
-      "title": "find",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "find.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "ithastobe": {
-      "title": "ithastobe",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "ithastobe1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
-    },
-    "spectrum": {
-      "title": "spectrum",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "spectrum1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
+    "sum": {
+      "displayName": "Sum of the Brothers",
+      "bio": "",
+      "links": {
+        "website": "",
+        "instagram": "",
+        "spotify": "",
+        "soundcloud": "",
+        "bandcamp": "",
+        "youtube": ""
+      }
     }
   },
-  "sum": {
-    "practice-jan28-2026": {
-      "title": "practice-jan28-2026",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "overtoyou_01-28-26.mp3",
-          "version": 5,
-          "releaseDate": "2026-01-30"
-        },
-        {
-          "file": "loveme_01-28-26.mp3",
-          "version": 4,
-          "releaseDate": "2026-01-30"
-        },
-        {
-          "file": "gayhitler_01-28-26.mp3",
-          "version": 2,
-          "releaseDate": "2026-01-30"
-        },
-        {
-          "file": "downtown_01-28-26.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
+  "tracks": {
+    "cooljoe": {
+      "floataway": {
+        "title": "floataway",
+        "artist": "cooljoe",
+        "uploadedDate": "2025-01-05",
+        "releaseDate": [],
+        "duration": 591,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "floataway1.mp3",
+            "version": 1,
+            "uploadedDate": "2024-12-01",
+            "releaseDate": [],
+            "duration": 147,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "floataway2.mp3",
+            "version": 2,
+            "uploadedDate": "2024-12-15",
+            "releaseDate": [],
+            "duration": 222,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "floataway3.mp3",
+            "version": 3,
+            "uploadedDate": "2025-01-05",
+            "releaseDate": [],
+            "duration": 222,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "dreamscanbe": {
+        "title": "dreamscanbe",
+        "artist": "cooljoe",
+        "uploadedDate": "2025-01-20",
+        "releaseDate": [],
+        "duration": 254,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "dreamscanbe1.mp3",
+            "version": 1,
+            "uploadedDate": "2025-01-15",
+            "releaseDate": [],
+            "duration": 123,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "dreamscanbe2.mp3",
+            "version": 2,
+            "uploadedDate": "2025-01-20",
+            "releaseDate": [],
+            "duration": 131,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "dropsofrain": {
+        "title": "dropsofrain",
+        "artist": "cooljoe",
+        "uploadedDate": "2025-01-10",
+        "releaseDate": [],
+        "duration": 176,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "dropsofrain1.mp3",
+            "version": 1,
+            "uploadedDate": "2025-01-10",
+            "releaseDate": [],
+            "duration": 176,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "keepon": {
+        "title": "keepon",
+        "artist": "cooljoe",
+        "uploadedDate": "2024-12-10",
+        "releaseDate": [],
+        "duration": 792,
+        "playlist": "Works in Progress",
+        "versions": [
+          {
+            "file": "keepon1.mp3",
+            "version": 1,
+            "uploadedDate": "2024-11-10",
+            "releaseDate": [],
+            "duration": 213,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "keepon2.mp3",
+            "version": 2,
+            "uploadedDate": "2024-11-15",
+            "releaseDate": [],
+            "duration": 213,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "keepon3.mp3",
+            "version": 3,
+            "uploadedDate": "2024-11-20",
+            "releaseDate": [],
+            "duration": 107,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "keepon4.mp3",
+            "version": 4,
+            "uploadedDate": "2024-12-01",
+            "releaseDate": [],
+            "duration": 107,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "keepon5.mp3",
+            "version": 5,
+            "uploadedDate": "2024-12-10",
+            "releaseDate": [],
+            "duration": 152,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "anythingandeverything": {
+        "title": "anythingandeverything",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 192,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "anythingandeverything1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 192,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "aquatica": {
+        "title": "aquatica",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 248,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "aquatica1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 248,
+            "bitrate": 191,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "buildingitup": {
+        "title": "buildingitup",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 306,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "buildingitup1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 306,
+            "bitrate": 175,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "continualloop": {
+        "title": "continualloop",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 204,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "continualloop1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 204,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "dance": {
+        "title": "dance",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 225,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "dance1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 225,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "doingme": {
+        "title": "doingme",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 180,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "doingme1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 180,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "dontlookatme": {
+        "title": "dontlookatme",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 152,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "dontlookatme1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 152,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "forgetmyname": {
+        "title": "forgetmyname",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 175,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "forgetmyname1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 175,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "fourfourfour": {
+        "title": "fourfourfour",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 169,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "fourfourfour1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 169,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "greatawesomefungoodtime": {
+        "title": "greatawesomefungoodtime",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 65,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "greatawesomefungoodtime1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 65,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "greenhillzone": {
+        "title": "greenhillzone",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 195,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "greenhillzone1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 195,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "hopinthewhip": {
+        "title": "hopinthewhip",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 182,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "hopinthewhip1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 182,
+            "bitrate": 169,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "iam": {
+        "title": "iam",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 331,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "iam1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 331,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "iou": {
+        "title": "iou",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 323,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "iou1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 323,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "isthisadream": {
+        "title": "isthisadream",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 586,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "isthisadream1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 270,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "isthisadream2.mp3",
+            "version": 2,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 316,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "keepmakingmusic": {
+        "title": "keepmakingmusic",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 253,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "keepmakingmusic1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 253,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "letithappen": {
+        "title": "letithappen",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 284,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "letithappen1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 284,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "lostmymind": {
+        "title": "lostmymind",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 212,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "lostmymind1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 212,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "lucidheirs": {
+        "title": "lucidheirs",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 301,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "lucidheirs1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 301,
+            "bitrate": 193,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "manifest": {
+        "title": "manifest",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 388,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "manifest1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 148,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "manifest2.mp3",
+            "version": 2,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 240,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "meetpeople": {
+        "title": "meetpeople",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 219,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "meetpeople1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 219,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "nodoubt": {
+        "title": "nodoubt",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 233,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "nodoubt1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 233,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "okay": {
+        "title": "okay",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 217,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "okay1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 217,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "peace": {
+        "title": "peace",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 358,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "peace1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 358,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "risingsun": {
+        "title": "risingsun",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 238,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "risingsun1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 238,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "spiritofthesoul": {
+        "title": "spiritofthesoul",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 195,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "spiritofthesoul1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 195,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "surrender": {
+        "title": "surrender",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 183,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "surrender1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 183,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "thisfeeling": {
+        "title": "thisfeeling",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 154,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "thisfeeling1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 154,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "tomorrow": {
+        "title": "tomorrow",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 190,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "tomorrow1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 190,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "truetoyourself": {
+        "title": "truetoyourself",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 249,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "truetoyourself1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 249,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "trynottoverdoit": {
+        "title": "trynottoverdoit",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 212,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "trynottooverdoit1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 212,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "twisted": {
+        "title": "twisted",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 208,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "twisted1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 208,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "value": {
+        "title": "value",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 194,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "value1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 194,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "yougotttago": {
+        "title": "yougotttago",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 167,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "yougottago1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 167,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "find": {
+        "title": "find",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 173,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "find.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 173,
+            "bitrate": 192,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "ithastobe": {
+        "title": "ithastobe",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 231,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "ithastobe1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 231,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "spectrum": {
+        "title": "spectrum",
+        "artist": "cooljoe",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 128,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "spectrum1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 128,
+            "bitrate": 172,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "cooljoe"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      }
     },
-    "toldyabitch": {
-      "title": "toldyabitch",
-      "releaseDate": "2026-01-30",
-      "playlist": "Latest Releases",
-      "versions": [
-        {
-          "file": "toldyabitch.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        },
-        {
-          "file": "toldyabitch1.mp3",
-          "version": 1,
-          "releaseDate": "2026-01-30"
-        }
-      ]
+    "sum": {
+      "practice-jan28-2026": {
+        "title": "practice-jan28-2026",
+        "artist": "sum",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 959,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "downtown_01-28-26.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 212,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "gayhitler_01-28-26.mp3",
+            "version": 2,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 240,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "loveme_01-28-26.mp3",
+            "version": 4,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 237,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "overtoyou_01-28-26.mp3",
+            "version": 5,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 270,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "toldyabitch": {
+        "title": "toldyabitch",
+        "artist": "sum",
+        "uploadedDate": "2026-01-30",
+        "releaseDate": [],
+        "duration": 88,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "toldyabitch.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 8,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "toldyabitch1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-01-30",
+            "releaseDate": [],
+            "duration": 80,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      }
     }
   }
 }
