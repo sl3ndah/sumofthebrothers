@@ -262,6 +262,57 @@
         let searchTerm = '';
         let activeView = 'list';
 
+        // ── localStorage persistence ──────────────────────────────
+        function saveState() {
+            try {
+                localStorage.setItem('musicState', JSON.stringify({
+                    groupBy: activeGroupBy,
+                    sortField: activeSortField,
+                    sortDirection: activeSortDirection,
+                    filters: activeFilters,
+                    searchTerm: searchTerm,
+                    view: activeView
+                }));
+            } catch (e) {
+                console.error('Failed to save state:', e);
+            }
+        }
+
+        function loadState() {
+            try {
+                const saved = localStorage.getItem('musicState');
+                if (saved) {
+                    const state = JSON.parse(saved);
+                    activeGroupBy = state.groupBy || 'artist';
+                    activeSortField = state.sortField || 'uploadDate';
+                    activeSortDirection = state.sortDirection || 'desc';
+                    activeFilters = state.filters || [];
+                    searchTerm = state.searchTerm || '';
+                    activeView = state.view || 'list';
+                    
+                    // Update UI to match loaded state
+                    document.querySelectorAll('[data-group]').forEach(p => {
+                        p.classList.toggle('active', p.dataset.group === activeGroupBy);
+                    });
+                    document.querySelectorAll('[data-sort]').forEach(p => {
+                        p.classList.toggle('active', p.dataset.sort === activeSortField);
+                    });
+                    document.getElementById('sort-dir').textContent = activeSortDirection === 'desc' ? '↓' : '↑';
+                    document.getElementById('sort-dir').style.display = activeSortField === 'random' ? 'none' : 'inline-flex';
+                    document.getElementById('search-input').value = searchTerm;
+                    document.getElementById('view-list').classList.toggle('active', activeView === 'list');
+                    document.getElementById('view-card').classList.toggle('active', activeView === 'card');
+                    document.querySelector('.container').classList.toggle('wide', activeView === 'card');
+                    
+                    // Render filter chips
+                    renderChips();
+                    wireChipEvents();
+                }
+            } catch (e) {
+                console.error('Failed to load state:', e);
+            }
+        }
+
         function buildQueue(startArtist, startTrack, startVersion) {
             playQueue = [];
             const trackData = tracksData[startArtist][startTrack];
@@ -1373,6 +1424,7 @@
                     if (e.target.value !== 'between') activeFilters[idx].value2 = '';
                     renderChips();
                     wireChipEvents();
+                    saveState();
                     renderTracks();
                 });
             });
@@ -1382,6 +1434,7 @@
                 input.addEventListener('input', (e) => {
                     const idx = parseInt(e.target.dataset.idx);
                     activeFilters[idx].value = e.target.value;
+                    saveState();
                     renderTracks();
                 });
             });
@@ -1390,6 +1443,7 @@
                 input.addEventListener('input', (e) => {
                     const idx = parseInt(e.target.dataset.idx);
                     activeFilters[idx].value2 = e.target.value;
+                    saveState();
                     renderTracks();
                 });
             });
@@ -1401,6 +1455,7 @@
                     activeFilters.splice(idx, 1);
                     renderChips();
                     wireChipEvents();
+                    saveState();
                     renderTracks();
                 });
             });
@@ -1440,6 +1495,7 @@
 
                 renderChips();
                 wireChipEvents();
+                saveState();
                 renderTracks();
             });
         });
@@ -1487,6 +1543,7 @@
                 activeGroupBy = pill.dataset.group;
                 // Mark the Group trigger active only when an actual grouping is selected
                 document.querySelector('.ctrl-btn[data-panel="group"]').classList.toggle('active', activeGroupBy !== 'none');
+                saveState();
                 await renderTracks();
             });
         });
@@ -1514,6 +1571,7 @@
                     dirBtn.textContent = activeSortDirection === 'desc' ? '↓' : '↑';
                 }
                 document.querySelector('.ctrl-btn[data-panel="sort"]').classList.add('active');
+                saveState();
                 await renderTracks();
             });
         });
@@ -1523,6 +1581,7 @@
             e.stopPropagation();
             activeSortDirection = activeSortDirection === 'asc' ? 'desc' : 'asc';
             document.getElementById('sort-dir').textContent = activeSortDirection === 'desc' ? '↓' : '↑';
+            saveState();
             await renderTracks();
         });
 
@@ -1547,6 +1606,7 @@
                 document.getElementById('view-list').classList.toggle('active', activeView === 'list');
                 document.getElementById('view-card').classList.toggle('active', activeView === 'card');
                 document.querySelector('.container').classList.toggle('wide', activeView === 'card');
+                saveState();
                 renderTracks();
             });
         });
@@ -1672,6 +1732,7 @@
 
         document.getElementById('search-input').addEventListener('input', (e) => {
             searchTerm = e.target.value.toLowerCase();
+            saveState();
             renderTracks();
         });
 
@@ -1757,6 +1818,7 @@
 
         async function init() {
             await initDB();
+            loadState();
             await renderTracks();
             loadTrackFromURL();
         }
