@@ -1289,6 +1289,859 @@
       }
     },
     "sum": {
+      "2020": {
+        "title": "2020",
+        "artist": "sum",
+        "uploadedDate": "2026-02-03",
+        "releaseDate": [],
+        "duration": 16341,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "SOTB - Guitar Wailing 2.mp3",
+            "version": 2,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 1153,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Guitar Wailing.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 322,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Idea Assimilate.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 258,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Move Your Body.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 80,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 1 Break It Down.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 300,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 1 Freak.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 249,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 1 Taste 2.mp3",
+            "version": 2,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 256,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 1 Taste.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 1462,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 1 Was It A Lie 2.mp3",
+            "version": 2,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 436,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 1 Was It A Lie.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 403,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 1 Zen.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 97,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 2  Random Bassline.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 34,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 2 Easin Into It.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 531,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 2 Moves Like Water .mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 72,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 2 Slendah Song.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 280,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 3 Love Me.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 174,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 3 Play With Me Im a Little Boy.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 662,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 4 Break It Down.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 388,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 4 Love ME.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 186,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 4 Mary Jane.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 1032,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 4 Move Your Body.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 694,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 4 PreRoll.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 346,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 4 Slendah Song.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 683,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Practice 4 Taste.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 262,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Random Aggression.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 828,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Set 1.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 1059,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Set 2.mp3",
+            "version": 2,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 3606,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Slendah Song Practice.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 204,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SOTB - Taste.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 284,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "2024": {
+        "title": "2024",
+        "artist": "sum",
+        "uploadedDate": "2026-02-03",
+        "releaseDate": [],
+        "duration": 20221,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "Band Practice 2.mp3",
+            "version": 2,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 1791,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "Band Practice.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 2545,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "MAXS SONG.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 149,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "New Recording 27.mp3",
+            "version": 27,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 718,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "New Recording 28.mp3",
+            "version": 28,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 671,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "New Recording 29.mp3",
+            "version": 29,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 503,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "New Recording 30.mp3",
+            "version": 30,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 782,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SotBftS - FATM2.mp3",
+            "version": 2,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 204,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SotBftS - Freak & Move Your Body.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 925,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SotBftS - Fuck All The Money.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 115,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SotBftS - Livin On.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 132,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SotBftS - Love Me.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 523,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SotBftS - Slendah Song.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 290,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SotBftS Lindsay School Set 1a.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 945,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SotBftS Lindsay School Set 1b - Little House.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 313,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SotBftS Lindsay School Set 1c - Break it Down.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 322,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "SotBftS Lindsay School Set.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 1820,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "Sum - Perf A.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 2517,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "Sum - Perf B.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 2031,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "Sum - Perf C.mp3",
+            "version": 1,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 2925,
+            "bitrate": 128,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
       "practice-jan28-2026": {
         "title": "practice-jan28-2026",
         "artist": "sum",
@@ -1415,6 +2268,101 @@
             "uploadedDate": "2026-01-30",
             "releaseDate": [],
             "duration": 80,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          }
+        ]
+      },
+      "2026-01-28": {
+        "title": "2026-01-28",
+        "artist": "sum",
+        "uploadedDate": "2026-02-03",
+        "releaseDate": [],
+        "duration": 1206,
+        "playlist": "Latest Releases",
+        "versions": [
+          {
+            "file": "downtown_2026-01-28.mp3",
+            "version": 28,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 212,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "gayhitler_2026-01-28.mp3",
+            "version": 28,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 240,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "letmebreathe_2026-01-28.mp3",
+            "version": 28,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 247,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "lovme_2026-01-28.mp3",
+            "version": 28,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 237,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "overtoyou_2026-01-28.mp3",
+            "version": 28,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 270,
             "bitrate": 320,
             "genre": [],
             "mood": [],
