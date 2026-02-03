@@ -7,7 +7,6 @@ echo.
 REM Step 1: Upload to R2
 echo [1/3] Uploading music to R2...
 echo.
-    pause
 rclone copy music/ r2-sumofthebrothers:sumofthebrothers -P --transfers 8
 
 if %ERRORLEVEL% NEQ 0 (
