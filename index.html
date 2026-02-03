@@ -700,6 +700,60 @@
             meta.textContent = metaParts.join(' · ');
             inner.appendChild(meta);
 
+            // YouTube embed — gather all video IDs from track and all versions
+            let videoIds = [];
+            
+            // Legacy single youtube field (track level)
+            if (trackData.youtube) videoIds.push(trackData.youtube);
+            
+            // New videos array (track level)
+            if (trackData.videos && Array.isArray(trackData.videos)) {
+                videoIds.push(...trackData.videos);
+            }
+            
+            // Version-level videos
+            trackData.versions.forEach(v => {
+                if (v.youtube) videoIds.push(v.youtube);
+                if (v.videos && Array.isArray(v.videos)) videoIds.push(...v.videos);
+            });
+            
+            // Dedupe in case same video appears multiple places
+            videoIds = [...new Set(videoIds)];
+            
+            if (videoIds.length > 0) {
+                const videoWrap = document.createElement('div');
+                videoWrap.className = 'modal-collapsible modal-video-collapsible open';
+                
+                const headerText = videoIds.length === 1 ? 'Video' : `Videos (${videoIds.length})`;
+                
+                let videosHTML = '';
+                if (videoIds.length === 1) {
+                    // Single video - just the iframe
+                    videosHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${videoIds[0]}?autoplay=0&rel=0" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                } else {
+                    // Multiple videos - horizontal scroll with thumbnails
+                    videosHTML = '<div class="modal-video-scroll">';
+                    videoIds.forEach((id, idx) => {
+                        videosHTML += `
+                            <div class="modal-video-item" data-video-id="${id}">
+                                <img src="https://img.youtube.com/vi/${id}/mqdefault.jpg" alt="Video ${idx + 1}">
+                                <div class="modal-video-play">▶</div>
+                            </div>
+                        `;
+                    });
+                    videosHTML += '</div>';
+                    videosHTML += '<div class="modal-video-player"></div>';
+                }
+                
+                videoWrap.innerHTML = `
+                    <button class="modal-collapsible-header">${headerText}</button>
+                    <div class="modal-collapsible-body modal-video">
+                        ${videosHTML}
+                    </div>
+                `;
+                inner.appendChild(videoWrap);
+            }
+
             // Versions list
             const versions = [...trackData.versions].sort((a, b) => b.version - a.version);
             versions.forEach(v => {
@@ -793,6 +847,26 @@
                 hdr.addEventListener('click', () => {
                     const section = hdr.closest('.modal-collapsible');
                     section.classList.toggle('open');
+
+                    // Lazy-load video iframe on first open, pause on close
+                    const iframe = section.querySelector('iframe');
+                    if (iframe) {
+                        if (section.classList.contains('open') && !iframe.getAttribute('src')) {
+                            iframe.src = iframe.dataset.src;
+                        }
+                        if (!section.classList.contains('open') && iframe.contentWindow) {
+                            iframe.contentWindow.postMessage('{"event":"pause"}', 'https://www.youtube.com');
+                        }
+                    }
+                });
+            });
+
+            // Wire video thumbnail clicks (multi-video mode)
+            inner.querySelectorAll('.modal-video-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const videoId = item.dataset.videoId;
+                    const playerDiv = item.closest('.modal-video').querySelector('.modal-video-player');
+                    playerDiv.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                 });
             });
         }

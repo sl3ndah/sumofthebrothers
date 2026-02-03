@@ -1294,7 +1294,7 @@
         "artist": "sum",
         "uploadedDate": "2026-01-30",
         "releaseDate": [],
-        "duration": 959,
+        "duration": 1206,
         "playlist": "Latest Releases",
         "versions": [
           {
@@ -1320,6 +1320,23 @@
             "uploadedDate": "2026-01-30",
             "releaseDate": [],
             "duration": 240,
+            "bitrate": 320,
+            "genre": [],
+            "mood": [],
+            "bpm": [],
+            "key": [],
+            "artists": [
+              "sum"
+            ],
+            "lyrics": "",
+            "notes": ""
+          },
+          {
+            "file": "letmebreathe_01-28-26.mp3",
+            "version": 26,
+            "uploadedDate": "2026-02-03",
+            "releaseDate": [],
+            "duration": 247,
             "bitrate": 320,
             "genre": [],
             "mood": [],

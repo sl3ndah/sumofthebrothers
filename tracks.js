@@ -4,6 +4,7 @@ const tracksData = {
       "title": "floataway",
       "releaseDate": "2025-01-05",
       "playlist": "Latest Releases",
+      "youtube": "L_aYL1jz7uM",
       "versions": [
         {
           "file": "floataway3.mp3",
