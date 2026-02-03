@@ -987,7 +987,7 @@ const tracksData = {
       "duration": 16341,
       "versions": [
         {
-          "file": "SOTB - Guitar Wailing 2.mp3",
+          "file": "Guitar Wailing 2.mp3",
           "version": 2,
           "releaseDate": "2026-02-03",
           "duration": 1153,
@@ -1000,7 +1000,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Guitar Wailing.mp3",
+          "file": "Guitar Wailing.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 322,
@@ -1013,7 +1013,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Idea Assimilate.mp3",
+          "file": "Idea Assimilate.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 258,
@@ -1026,7 +1026,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Move Your Body.mp3",
+          "file": "Move Your Body.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 80,
@@ -1039,7 +1039,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 1 Break It Down.mp3",
+          "file": "Practice 1 Break It Down.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 300,
@@ -1052,7 +1052,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 1 Freak.mp3",
+          "file": "Practice 1 Freak.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 249,
@@ -1065,7 +1065,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 1 Taste 2.mp3",
+          "file": "Practice 1 Taste 2.mp3",
           "version": 2,
           "releaseDate": "2026-02-03",
           "duration": 256,
@@ -1078,7 +1078,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 1 Taste.mp3",
+          "file": "Practice 1 Taste.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 1462,
@@ -1091,7 +1091,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 1 Was It A Lie 2.mp3",
+          "file": "Practice 1 Was It A Lie 2.mp3",
           "version": 2,
           "releaseDate": "2026-02-03",
           "duration": 436,
@@ -1104,7 +1104,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 1 Was It A Lie.mp3",
+          "file": "Practice 1 Was It A Lie.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 403,
@@ -1117,7 +1117,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 1 Zen.mp3",
+          "file": "Practice 1 Zen.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 97,
@@ -1130,7 +1130,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 2  Random Bassline.mp3",
+          "file": "Practice 2  Random Bassline.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 34,
@@ -1143,7 +1143,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 2 Easin Into It.mp3",
+          "file": "Practice 2 Easin Into It.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 531,
@@ -1156,7 +1156,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 2 Moves Like Water .mp3",
+          "file": "Practice 2 Moves Like Water .mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 72,
@@ -1169,7 +1169,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 2 Slendah Song.mp3",
+          "file": "Practice 2 Slendah Song.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 280,
@@ -1182,7 +1182,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 3 Love Me.mp3",
+          "file": "Practice 3 Love Me.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 174,
@@ -1195,7 +1195,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 3 Play With Me Im a Little Boy.mp3",
+          "file": "Practice 3 Play With Me Im a Little Boy.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 662,
@@ -1208,7 +1208,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 4 Break It Down.mp3",
+          "file": "Practice 4 Break It Down.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 388,
@@ -1221,7 +1221,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 4 Love ME.mp3",
+          "file": "Practice 4 Love ME.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 186,
@@ -1234,7 +1234,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 4 Mary Jane.mp3",
+          "file": "Practice 4 Mary Jane.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 1032,
@@ -1247,7 +1247,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 4 Move Your Body.mp3",
+          "file": "Practice 4 Move Your Body.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 694,
@@ -1260,7 +1260,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 4 PreRoll.mp3",
+          "file": "Practice 4 PreRoll.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 346,
@@ -1273,7 +1273,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 4 Slendah Song.mp3",
+          "file": "Practice 4 Slendah Song.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 683,
@@ -1286,7 +1286,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Practice 4 Taste.mp3",
+          "file": "Practice 4 Taste.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 262,
@@ -1299,7 +1299,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Random Aggression.mp3",
+          "file": "Random Aggression.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 828,
@@ -1312,7 +1312,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Set 1.mp3",
+          "file": "Set 1.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 1059,
@@ -1325,7 +1325,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Set 2.mp3",
+          "file": "Set 2.mp3",
           "version": 2,
           "releaseDate": "2026-02-03",
           "duration": 3606,
@@ -1338,7 +1338,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Slendah Song Practice.mp3",
+          "file": "Slendah Song Practice.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 204,
@@ -1351,7 +1351,7 @@ const tracksData = {
           "notes": ""
         },
         {
-          "file": "SOTB - Taste.mp3",
+          "file": "Taste.mp3",
           "version": 1,
           "releaseDate": "2026-02-03",
           "duration": 284,
